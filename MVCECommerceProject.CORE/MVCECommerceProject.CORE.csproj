@@ -43,7 +43,9 @@
   <ItemGroup>
     <Compile Include="Entity\CoreEntity.cs" />
     <Compile Include="Entity\IEntity.cs" />
+    <Compile Include="Enums\Status.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

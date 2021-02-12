@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MVCECommerceProject.CORE.Entity;
+using System.Data.Entity.ModelConfiguration;
 
 namespace MVCECommerceProject.CORE.Map
 {
-    class CoreMap
+    public class CoreMap<T> : EntityTypeConfiguration<T> where T : CoreEntity
     {
+        public CoreMap()
+        {
+            Property(x => x.Status).HasColumnName("Status").IsOptional();
+            Property(x => x.CreatedDate).HasColumnName("CreatedDate").IsOptional();
+        }
     }
 }

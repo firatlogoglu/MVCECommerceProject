@@ -63,6 +63,7 @@
     <Compile Include="Map\OrderMap.cs" />
     <Compile Include="Map\ProductMap.cs" />
     <Compile Include="Map\SubCategoryMap.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

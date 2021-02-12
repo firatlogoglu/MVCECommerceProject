@@ -22,3 +22,10 @@
 * 2.1.6 SubCategory
 #### 2.2 - Enums
 * Role
+#### 2.3 - Map
+* AppUserMap:
+* CategoryMap:
+* OrderDetailMap:
+* OrderMap:
+* ProductMap:
+* SubCategoryMap:

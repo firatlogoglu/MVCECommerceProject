@@ -55,6 +55,12 @@
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\SubCategory.cs" />
     <Compile Include="Enums\Role.cs" />
+    <Compile Include="Map\AppUserMap.cs" />
+    <Compile Include="Map\CategoryMap.cs" />
+    <Compile Include="Map\OrderDetailMap.cs" />
+    <Compile Include="Map\OrderMap.cs" />
+    <Compile Include="Map\ProductMap.cs" />
+    <Compile Include="Map\SubCategoryMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

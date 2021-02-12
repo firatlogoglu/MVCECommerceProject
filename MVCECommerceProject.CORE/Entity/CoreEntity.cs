@@ -1,6 +1,5 @@
 ﻿using MVCECommerceProject.CORE.Enums;
 using System;
-using System.Security.Principal;
 
 namespace MVCECommerceProject.CORE.Entity
 {
@@ -9,12 +8,6 @@ namespace MVCECommerceProject.CORE.Entity
         public CoreEntity()
         {
             this.Status = Status.Active;
-            this.CreatedDate = DateTime.Now;
-            this.CreatedComputerName = Environment.MachineName;
-            this.CreatedADUsername = WindowsIdentity.GetCurrent().Name;
-            //todo: Ip Adresi Alınacak.
-            this.CreatedIP = "192.168.1.1";
-            this.CreatedBy = 1;
         }
 
         public Guid ID { get; set; }

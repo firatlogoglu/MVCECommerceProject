@@ -48,11 +48,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\AppUser.cs" />
+    <Compile Include="Entities\Category.cs" />
+    <Compile Include="Entities\Order.cs" />
+    <Compile Include="Entities\OrderDetail.cs" />
+    <Compile Include="Entities\Product.cs" />
+    <Compile Include="Entities\SubCategory.cs" />
+    <Compile Include="Enums\Role.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MVCECommerceProject.CORE\MVCECommerceProject.CORE.csproj">
+      <Project>{C166D305-305F-4563-98A6-BF19969C106E}</Project>
+      <Name>MVCECommerceProject.CORE</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

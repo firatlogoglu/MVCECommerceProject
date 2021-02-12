@@ -12,3 +12,13 @@
 * CoreMap: CoreEntity içerisindeki özelliklere çeşitli isimledirmeler ve sınırlandırılmalar verilmiştir.
 #### 1.4 - Service
 * ICoreService: Tüm service'lerde bulunan ortak eylemler tanımlandı.
+### 2 - MVCECommerceProject.MODEL
+#### 2.1 - Entities
+* 2.1.1 AppUser
+* 2.1.2 Category
+* 2.1.3 Order
+* 2.1.4 OrderDetail
+* 2.1.5 Product
+* 2.1.6 SubCategory
+#### 2.2 - Enums
+* Role

@@ -21,7 +21,10 @@
 * 2.1.5 Product
 * 2.1.6 SubCategory
 #### 2.2 - Enums
-* Role
+* Role	 
+* BloodType
+* Gender
+* MaritalState
 #### 2.3 - Map
 * AppUserMap:
 * CategoryMap:
@@ -31,3 +34,4 @@
 * SubCategoryMap:
 #### 2.4 - Context
 * ProjectContext:
+* SampleData:

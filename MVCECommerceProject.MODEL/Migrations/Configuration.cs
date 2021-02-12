@@ -1,5 +1,6 @@
 namespace MVCECommerceProject.MODEL.Migrations
 {
+    using MVCECommerceProject.MODEL.Context;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -9,15 +10,13 @@ namespace MVCECommerceProject.MODEL.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(MVCECommerceProject.MODEL.Context.ProjectContext context)
         {
-            //  This method will be called after migrating to the latest version.
-
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data.
+            SampleData data = new SampleData();
+            data.InitializeDatabase(context);
         }
     }
 }

@@ -13,7 +13,7 @@ namespace MVCECommerceProject.MODEL.Context
     {
         public ProjectContext()
         {
-            Database.Connection.ConnectionString = "server=.;database=NTierProjectDB;uid=sa;pwd=123";
+            Database.Connection.ConnectionString = "server=.;database=MVCECommerceProjectDB;uid=sa;pwd=123";
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

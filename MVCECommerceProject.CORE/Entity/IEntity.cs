@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace MVCECommerceProject.CORE.Entity
 {
-    interface IEntity
+    public interface IEntity<T>
     {
+        T ID { get; set; }
     }
 }

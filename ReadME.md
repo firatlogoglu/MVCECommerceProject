@@ -10,3 +10,5 @@
 * GeneralStatus(Genel Durumlar): Aktif, Update ve Deleted. Enum listesi olarak tanımlanıp 1.1 Entity içerisindeki CoreEntity içerisine verilmiştir.
 #### 1.3 - Map
 * CoreMap: CoreEntity içerisindeki özelliklere çeşitli isimledirmeler ve sınırlandırılmalar verilmiştir.
+#### 1.4 - Service
+* ICoreService: Tüm service'lerde bulunan ortak eylemler tanımlandı.

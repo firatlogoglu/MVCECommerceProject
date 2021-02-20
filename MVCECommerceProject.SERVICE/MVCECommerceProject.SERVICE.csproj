@@ -41,7 +41,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\BaseService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MVCECommerceProject.CORE\MVCECommerceProject.CORE.csproj">
+      <Project>{c166d305-305f-4563-98a6-bf19969c106e}</Project>
+      <Name>MVCECommerceProject.CORE</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MVCECommerceProject.MODEL\MVCECommerceProject.MODEL.csproj">
+      <Project>{8408da0e-ffb7-4d68-a1e4-1600017a4ff3}</Project>
+      <Name>MVCECommerceProject.MODEL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

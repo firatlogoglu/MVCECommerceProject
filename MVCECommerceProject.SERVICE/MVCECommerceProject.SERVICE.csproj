@@ -51,6 +51,7 @@
     <Compile Include="Base\BaseService.cs" />
     <Compile Include="Option\AppUserService.cs" />
     <Compile Include="Option\CategoryService.cs" />
+    <Compile Include="Option\OrderDetailService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

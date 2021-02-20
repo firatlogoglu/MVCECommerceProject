@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MVCECommerceProject.MODEL.Entities;
+using MVCECommerceProject.SERVICE.Base;
 
 namespace MVCECommerceProject.SERVICE.Option
 {
-    class AppUserService
+    public class AppUserService : BaseService<AppUser>
     {
+        public bool CheckCredentials(string _username, string _password)
+        {
+            return Any(x => x.UserName == _username && x.Password == _password);
+        }
     }
 }

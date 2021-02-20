@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MVCECommerceProject.MODEL.Entities;
+using MVCECommerceProject.SERVICE.Base;
 
 namespace MVCECommerceProject.SERVICE.Option
 {
-    class ProductService
+    public class ProductService : BaseService<Product>
     {
     }
 }

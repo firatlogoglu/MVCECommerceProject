@@ -53,6 +53,7 @@
     <Compile Include="Option\CategoryService.cs" />
     <Compile Include="Option\OrderDetailService.cs" />
     <Compile Include="Option\OrderService.cs" />
+    <Compile Include="Option\ProductService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

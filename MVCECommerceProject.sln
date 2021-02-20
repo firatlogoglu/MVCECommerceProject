@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCECommerceProject.MODEL",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCECommerceProject.SERVICE", "MVCECommerceProject.SERVICE\MVCECommerceProject.SERVICE.csproj", "{26EA4C5D-1A1B-414A-AD42-45D4433A7234}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCECommerceProject.MVC", "MVCECommerceProject.MVC\MVCECommerceProject.MVC.csproj", "{F5B8BBA9-2FDA-49B9-915E-1E990DF32B02}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +34,10 @@ Global
 		{26EA4C5D-1A1B-414A-AD42-45D4433A7234}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26EA4C5D-1A1B-414A-AD42-45D4433A7234}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26EA4C5D-1A1B-414A-AD42-45D4433A7234}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5B8BBA9-2FDA-49B9-915E-1E990DF32B02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5B8BBA9-2FDA-49B9-915E-1E990DF32B02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5B8BBA9-2FDA-49B9-915E-1E990DF32B02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5B8BBA9-2FDA-49B9-915E-1E990DF32B02}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -36,7 +36,7 @@
 * ProjectContext:
 * SampleData:
 #### 2.5 - Migrations
-* Configuration içerisine 2.4 Context içerisinde yer alan SampleData instece alınarak Seed metotun içerisine verilmiştir.
+* Configuration içerisine 2.4 Context içerisinde yer alan SampleData instance alınarak Seed metotun içerisine verilmiştir.
 ### 3 - MVCECommerceProject.SERVICE/BLL (İş Katmanı) 
 #### 3.1 - Base
 * BaseSerice: Tüm Etitylerde bulunan belli başlı CRUD ve Listeleme işlemleri tanımlanmıştır.
@@ -47,3 +47,4 @@
 * OrderService:
 * ProductService:
 * SubCategoryService:
+### 4 - MVCECommerceProject.MVC (Sunum Katmanı)

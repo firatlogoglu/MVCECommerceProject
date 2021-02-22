@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MVCECommerceProject.COMMON
+namespace MVCECommerceProject.COMMON.MyTools
 {
-    public class Class1
+    class ImageUploader
     {
     }
 }

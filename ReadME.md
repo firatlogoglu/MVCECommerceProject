@@ -48,3 +48,7 @@
 * ProductService:
 * SubCategoryService:
 ### 4 - MVCECommerceProject.MVC (Sunum Katmanı)
+
+### 5 - MVCECommerceProject.COMMON
+#### Tools/Araçlar
+* ImagesUploader/Resim Yükleyicisi

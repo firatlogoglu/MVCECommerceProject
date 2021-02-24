@@ -52,3 +52,4 @@
 ### 5 - MVCECommerceProject.COMMON
 #### Tools/Araçlar
 * ImagesUploader/Resim Yükleyicisi
+* MailSender/E-Posta Göndericisi

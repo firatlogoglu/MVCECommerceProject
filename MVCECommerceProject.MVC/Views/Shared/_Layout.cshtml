@@ -5,19 +5,31 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title -- E-Ticaret</title>
-    @Styles.Render("~/Content/css")
+    <!-- Custom fonts for this template-->
+    @Styles.Render("~/Content/Sb_Admin_2")
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body>
-    @Html.Partial("PartialViews/_TopNavbar")
-    <div class="container body-content">
-        @RenderBody()
+<body id="page-top">
+    <div id="wrapper">
+        @Html.Partial("PartialViews/_Sidebar")
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div class="container-fluid">
+
+                @Html.Partial("PartialViews/_TopNavbar")
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
         <hr />
         @Html.Partial("PartialViews/_Footer")
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Content/Sb_Admin")
     @RenderSection("scripts", required: false)
 </body>
 </html>

@@ -22,9 +22,19 @@ namespace MVCECommerceProject.MVC
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js"));
 
+            bundles.Add(new ScriptBundle("~/Content/Sb_Admin").Include(
+               "~/Content/Sb_Admin_2/vendor/jquery/jquery.min.js",
+               "~/Content/Sb_Admin_2/vendor/bootstrap/js/bootstrap.bundle.min.js",
+               "~/Content/Sb_Admin_2/vendor/jquery-easing/jquery.easing.min.js",
+               "~/Content/Sb_Admin_2/js/sb-admin-2.min.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/Sb_Admin_2").Include(
+                      "~/Content/Sb_Admin_2/vendor/fontawesome-free/css/all.min.css",
+                      "~/Content/Sb_Admin_2/css/sb-admin-2.min.css"));
         }
     }
 }

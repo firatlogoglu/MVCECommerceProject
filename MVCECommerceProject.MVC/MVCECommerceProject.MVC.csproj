@@ -131,6 +131,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\img\login.png" />
     <Content Include="Content\Sb_Admin_2\.gitignore" />
     <Content Include="Content\Sb_Admin_2\404.html" />
     <Content Include="Content\Sb_Admin_2\blank.html" />
@@ -2077,6 +2078,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\PartialViews\_Footer.cshtml" />
     <Content Include="Views\Shared\PartialViews\_TopNavbar.cshtml" />
+    <Content Include="Views\Shared\PartialViews\_Sidebar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

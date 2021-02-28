@@ -1,0 +1,25 @@
+﻿@model MVCECommerceProject.MODEL.Entities.AppUser
+@{
+    ViewBag.Title = "Giriş Yap";
+    Layout = "~/Areas/Manegement/Views/Shared/_Layout.cshtml";
+}
+
+@*<h2>Yönetim Giriş Paneli</h2>*@
+
+@using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "form-signin" }))
+{
+    <h2 class="form-signin-heading">@ViewBag.Title</h2>
+    <div class="login-wrap">
+        @Html.Partial("PartialViews/_ErrorMsg")
+
+        @Html.TextBox("Email", null, new { @class = "form-control", placeholder = "E-Posta Adresi", @autofocus = "autofocus" })
+        <br />
+        @Html.TextBox("Password", null, new { @class = "form-control", placeholder = "Şifre", type = "Password" })
+
+        <span class="pull-right">
+            @Html.ActionLink("Şifremi Unuttum", "ForgotPassword", "Account", new { area = "Manegement" })
+        </span>
+
+        <button class="btn btn-lg btn-block btn-success" type="submit">Giriş</button>
+    </div>
+}

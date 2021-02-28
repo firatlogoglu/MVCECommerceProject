@@ -45,6 +45,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -120,6 +126,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Manegement\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Manegement\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Manegement\ManegementAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Filters\AuthorizationFilters\ManegementAuthFilter.cs" />
     <Compile Include="Global.asax.cs">
@@ -2052,6 +2061,15 @@
     <Content Include="Content\Sb_Admin_2\vendor\fontawesome-free\webfonts\fa-solid-900.woff2" />
     <Content Include="Content\Sb_Admin_2\vendor\jquery\jquery.min.map" />
     <Content Include="Content\Sb_Admin_2\vendor\jquery\jquery.slim.min.map" />
+    <Content Include="Areas\Manegement\Views\web.config" />
+    <Content Include="Areas\Manegement\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Manegement\Views\Shared\PartialViews\_Footer.cshtml" />
+    <Content Include="Areas\Manegement\Views\Shared\PartialViews\_Sidebar.cshtml" />
+    <Content Include="Areas\Manegement\Views\Shared\PartialViews\_TopNavbar.cshtml" />
+    <Content Include="Areas\Manegement\Views\Account\Login.cshtml" />
+    <Content Include="Areas\Manegement\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Manegement\Views\Shared\PartialViews\_ErrorMsg.cshtml" />
+    <Content Include="Areas\Manegement\Views\Account\ForgotPassword.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2083,6 +2101,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Manegement\Data\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -2097,6 +2116,20 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MVCECommerceProject.COMMON\MVCECommerceProject.COMMON.csproj">
+      <Project>{3cc49a30-ffcc-4980-a92f-bb465e1d90d7}</Project>
+      <Name>MVCECommerceProject.COMMON</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MVCECommerceProject.MODEL\MVCECommerceProject.MODEL.csproj">
+      <Project>{8408DA0E-FFB7-4D68-A1E4-1600017A4FF3}</Project>
+      <Name>MVCECommerceProject.MODEL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MVCECommerceProject.SERVICE\MVCECommerceProject.SERVICE.csproj">
+      <Project>{26EA4C5D-1A1B-414A-AD42-45D4433A7234}</Project>
+      <Name>MVCECommerceProject.SERVICE</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

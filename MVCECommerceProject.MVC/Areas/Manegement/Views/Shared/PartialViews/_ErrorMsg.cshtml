@@ -1,0 +1,8 @@
+﻿@{
+    if (TempData["Error"] != null)
+    {
+        <div class="alert-warning">
+            <p style="color:red;">@TempData["Error"]</p>
+        </div>
+    }
+}

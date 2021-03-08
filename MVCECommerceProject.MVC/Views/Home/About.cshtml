@@ -2,10 +2,4 @@
     ViewBag.Title = "Hakkında";
 }
 
-<div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">@ViewBag.Title</h1>
-</div>
-
-<h3>@ViewBag.Message</h3>
-
-<p>Use this area to provide additional information.</p>
+@Html.Partial("PartialViews/_About")

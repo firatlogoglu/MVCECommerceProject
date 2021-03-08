@@ -12,19 +12,23 @@ namespace MVCECommerceProject.MODEL.Entities
     {
         [Required(ErrorMessage = "Lütfen T.C numaranızı girin"), Display(Name = "TC Kimlik No")]
         public string TCNO { get; set; }
+
+        [Required(ErrorMessage = "Lütfen isminizi girin"), Display(Name = "İsim")]
         public string Name { get; set; }
+        [Required(ErrorMessage = "Lütfen soy isminizi girin"), Display(Name = "Soy İsim")]
         public string SurName { get; set; }
 
         //[Required(ErrorMessage = "Kullanıcı Adı zorunlu!")]
         //public string UserName { get; set; }
 
+        [Required(ErrorMessage = "Lütfen bir şifre girin"), Display(Name = "Şifre")]
         public string Password { get; set; }
 
         [Compare("Password", ErrorMessage = "Şifreler uyumlu değil!")]
         [NotMapped]
         public string ConfirmPassword { get; set; }
 
-        [EmailAddress(ErrorMessage = "Lütfen geçerli bir email adresi giriniz.")]
+        [EmailAddress(ErrorMessage = "Lütfen geçerli bir e-posta adresi giriniz."), Display(Name = "E-posta Adresi")]
         public string Email { get; set; }
 
         public string Address { get; set; }
@@ -44,6 +48,7 @@ namespace MVCECommerceProject.MODEL.Entities
 
         [Display(Name = "Medeni Hali")]
         public MaritalState MaritalState { get; set; }
+
         //Mapping
         public List<Order> Orders { get; set; }
     }

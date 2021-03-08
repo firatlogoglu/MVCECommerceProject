@@ -29,26 +29,9 @@
         </a>
     </li>
 
-    <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-            <i class=" fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-            <span>Giriş Yap</span>
-        </a>
-    </li>
+    @Html.Partial("PartialViews/_LoginSidebar")
 
-    <li class="nav-item">
-        <a class="nav-link" href="@Url.Action("About","Home")">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Hakkında</span>
-        </a>
-    </li>
-
-    <li class="nav-item">
-        <a class="nav-link" href="@Url.Action("Contact","Home")">
-            <i class="fas fa-fw fa-table"></i>
-            <span>İletişim</span>
-        </a>
-    </li>
+    @Html.Partial("PartialViews/_ContactAboutSidebar")
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

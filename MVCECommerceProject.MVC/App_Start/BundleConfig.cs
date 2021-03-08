@@ -28,13 +28,22 @@ namespace MVCECommerceProject.MVC
                "~/Content/Sb_Admin_2/vendor/jquery-easing/jquery.easing.min.js",
                "~/Content/Sb_Admin_2/js/sb-admin-2.min.js"));
 
+            bundles.Add(new ScriptBundle("~/Content/Sb_Admin_2/vendor/datatables").Include(
+               "~/Content/Sb_Admin_2/vendor/datatables/jquery.dataTables.min.js",
+               "~/Content/Sb_Admin_2/vendor/datatables/dataTables.bootstrap4.min.js",
+               "~/Content/Sb_Admin_2/js/demo/datatables-demo.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
 
             bundles.Add(new StyleBundle("~/Content/Sb_Admin_2").Include(
+                "~/Content/myCSS.css",
                       "~/Content/Sb_Admin_2/vendor/fontawesome-free/css/all.min.css",
                       "~/Content/Sb_Admin_2/css/sb-admin-2.min.css"));
+
+            bundles.Add(new StyleBundle("~/Content/Sb_Admin_2/vendor/datatablescss").Include(
+          "~/Content/Sb_Admin_2/vendor/datatables/dataTables.bootstrap4.min.css"));
         }
     }
 }

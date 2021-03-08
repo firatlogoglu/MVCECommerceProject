@@ -1,0 +1,34 @@
+﻿@model MVCECommerceProject.MODEL.Entities.AppUser
+@{
+    ViewBag.Title = "Müşteri Giriş Paneli";
+    Layout = "~/Areas/Customer/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">@ViewBag.Title</h6>
+        <div class="pull-right-mycss">
+            @Html.ActionLink("Kayıt Ol", "Register", "Account")
+        </div>
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "form-signin" }))
+        {
+            <div class="login-wrap">
+                @Html.Partial("PartialViews/_ErrorMsg")
+
+                @Html.TextBox("Email", null, new { @class = "form-control", placeholder = "E-Posta Adresi", @autofocus = "autofocus" })
+                <br />
+                @Html.TextBox("Password", null, new { @class = "form-control", placeholder = "Şifre", type = "Password" })
+
+                <span class="pull-right-mycss">
+                    <br />
+                    @Html.ActionLink("Şifremi Unuttum", "ForgotPassword", "Account", new { area = "Customer" })
+                    <br />
+                </span>
+
+                <button class="btn btn-lg btn-block btn-success" type="submit">Giriş</button>
+            </div>
+        }
+    </div>
+</div>

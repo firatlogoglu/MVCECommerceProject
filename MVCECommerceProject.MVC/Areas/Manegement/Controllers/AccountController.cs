@@ -1,11 +1,8 @@
-﻿using MVCECommerceProject.MODEL.Entities;
+﻿using MVCECommerceProject.COMMON.MyTools;
+using MVCECommerceProject.MODEL.Entities;
 using MVCECommerceProject.MVC.Filters.AuthorizationFilters;
 using MVCECommerceProject.SERVICE.Option;
-using MVCECommerceProject.COMMON.MyTools;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace MVCECommerceProject.MVC.Areas.Manegement.Controllers
@@ -42,6 +39,7 @@ namespace MVCECommerceProject.MVC.Areas.Manegement.Controllers
                         var userDetail = Session["MLogin"] as AppUser;
                         TempData["User"] = userDetail.Name + " " + userDetail.SurName;
                         TempData["UserImg"] = userDetail.ImagePath;
+                        TempData.Keep();
                         return RedirectToAction("Index", "Home");
                     }
                     else
@@ -64,6 +62,27 @@ namespace MVCECommerceProject.MVC.Areas.Manegement.Controllers
         public ActionResult ForgotPassword()
         {
             return View();
+        }
+
+        [ManegementAuthFilter]
+        public ActionResult Index()
+        {
+            Guid id = Guid.Empty;
+            if (TempData["User"] == null || TempData["UserImg"] == null)
+            {
+                var userDetail = Session["MLogin"] as AppUser;
+                TempData["User"] = userDetail.Name + " " + userDetail.SurName;
+                TempData["UserImg"] = userDetail.ImagePath;
+                id = userDetail.ID;
+                TempData.Keep();
+            }
+            else
+            {
+                var userDetail = Session["MLogin"] as AppUser;
+                id = userDetail.ID;
+            }
+
+            return View(db.GetById(id));
         }
 
         [HttpPost]

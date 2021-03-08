@@ -4,6 +4,8 @@
     {
         Banned = 0,
         Member = 1,
-        Admin = 2
+        Admin = 2,
+        Customer = 3,
+        Seller_Customer = 4
     }
 }

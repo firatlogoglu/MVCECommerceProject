@@ -3,6 +3,7 @@ using MVCECommerceProject.MODEL.Entities;
 using MVCECommerceProject.MVC.Filters.AuthorizationFilters;
 using MVCECommerceProject.SERVICE.Option;
 using System;
+using System.Web;
 using System.Web.Mvc;
 
 namespace MVCECommerceProject.MVC.Areas.Manegement.Controllers
@@ -85,6 +86,56 @@ namespace MVCECommerceProject.MVC.Areas.Manegement.Controllers
             return View(db.GetById(id));
         }
 
+        [ManegementAuthFilter]
+        public ActionResult Edit(Guid id)
+        {
+            Guid guidid = Guid.Empty;
+            if (TempData["User"] == null || TempData["UserImg"] == null)
+            {
+                var userDetail = Session["MLogin"] as AppUser;
+                TempData["User"] = userDetail.Name + " " + userDetail.SurName;
+                TempData["UserImg"] = userDetail.ImagePath;
+                guidid = userDetail.ID;
+                TempData.Keep();
+            }
+            else
+            {
+                var userDetail = Session["MLogin"] as AppUser;
+                id = userDetail.ID;
+            }
+
+            if (id != null)
+            {
+                AppUser appUser = db.GetById(id);
+                return View(appUser);
+            }
+            else
+            {
+                TempData["Error"] = "Bir hata meydana geldi.";
+                return RedirectToAction("Index");
+            }
+        }
+
+        [ManegementAuthFilter]
+        [HttpPost]
+        public ActionResult Edit(HttpPostedFileBase ImagePath, AppUser appUser)
+        {
+            if (ImagePath != null)
+            {
+                appUser.ImagePath = ImageUploader.UploadSingleImage("~/Uploads/Image/Users/", ImagePath);
+                db.Update(appUser);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                var userDetail = Session["MLogin"] as AppUser;
+                appUser.ImagePath = userDetail.ImagePath;
+
+                db.Update(appUser);
+                return RedirectToAction("Index");
+            }
+        }
+
         [HttpPost]
         public ActionResult ForgotPassword(string mail)
         {
@@ -109,6 +160,8 @@ namespace MVCECommerceProject.MVC.Areas.Manegement.Controllers
         public ActionResult Logout()
         {
             Session.Remove("MLogin");
+            TempData.Clear();
+
             return RedirectToAction("Login");
         }
     }

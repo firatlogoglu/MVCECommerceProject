@@ -25,14 +25,16 @@ namespace MVCECommerceProject.MODEL.Entities
         public string Password { get; set; }
 
         [Compare("Password", ErrorMessage = "Şifreler uyumlu değil!")]
-        [NotMapped]
+        //[NotMapped]
         public string ConfirmPassword { get; set; }
 
-        [EmailAddress(ErrorMessage = "Lütfen geçerli bir e-posta adresi giriniz."), Display(Name = "E-posta Adresi")]
+        [Required(ErrorMessage = "Lütfen bir e-posta adresi giriniz."), EmailAddress(ErrorMessage = "Lütfen geçerli bir e-posta adresi giriniz."), Display(Name = "E-posta Adresi")]
         public string Email { get; set; }
 
         public string Address { get; set; }
         public string PhoneNumber { get; set; }
+
+        [Required(ErrorMessage = "Lütfen bir görsel seçin"), Display(Name = "Görsel")]
         public string ImagePath { get; set; }
 
         [Display(Name = "Doğum Yeri")]

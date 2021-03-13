@@ -1,3 +1,8 @@
 ﻿.pull-right-mycss {
     float: right !important;
 }
+
+.img-sm-mycss { 
+    width: 45px;
+    height: 45px;
+}

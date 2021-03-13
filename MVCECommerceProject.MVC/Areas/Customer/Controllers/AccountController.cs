@@ -72,8 +72,9 @@ namespace MVCECommerceProject.MVC.Areas.Customer.Controllers
             {
                 user.ID = Guid.NewGuid();
                 user.Role = MODEL.Enums.Role.Customer;
-                user.ImagePath = ImageUploader.UploadSingleImage("~/Uploads/Image/Users", ImagePath);
+                user.ImagePath = ImageUploader.UploadSingleImage("~/Uploads/Image/Users/", ImagePath);
                 db.Add(user);
+                TempData["Success"] = "Kayıt işlemi başarılı.";
                 return RedirectToAction("Login");
             }
             catch (Exception exp)
@@ -109,10 +110,91 @@ namespace MVCECommerceProject.MVC.Areas.Customer.Controllers
         }
 
         [CustomerAuthFilter]
+        public ActionResult Index()
+        {
+            Guid id = Guid.Empty;
+            if (TempData["User"] == null || TempData["UserImg"] == null)
+            {
+                var userDetail = Session["CLogin"] as AppUser;
+                TempData["User"] = userDetail.Name + " " + userDetail.SurName;
+                TempData["UserImg"] = userDetail.ImagePath;
+                id = userDetail.ID;
+                TempData.Keep();
+            }
+            else
+            {
+                var userDetail = Session["CLogin"] as AppUser;
+                id = userDetail.ID;
+            }
+
+            return View(db.GetById(id));
+        }
+
+        [CustomerAuthFilter]
+        public ActionResult Edit(Guid id)
+        {
+            Guid guidid = Guid.Empty;
+            if (TempData["User"] == null || TempData["UserImg"] == null)
+            {
+                var userDetail = Session["CLogin"] as AppUser;
+                TempData["User"] = userDetail.Name + " " + userDetail.SurName;
+                TempData["UserImg"] = userDetail.ImagePath;
+                guidid = userDetail.ID;
+                TempData.Keep();
+            }
+            else
+            {
+                var userDetail = Session["CLogin"] as AppUser;
+                id = userDetail.ID;
+            }
+
+            if (id != null)
+            {
+               AppUser appUser = db.GetById(id);
+                return View(appUser);
+            }
+            else
+            {
+                TempData["Error"] = "Bir hata meydana geldi.";
+                return RedirectToAction("Index");
+            }
+        }
+
+        [CustomerAuthFilter]
+        [HttpPost]
+        public ActionResult Edit(HttpPostedFileBase ImagePath, AppUser appUser)
+        {
+            if (ImagePath != null)
+            {
+                appUser.ImagePath = ImageUploader.UploadSingleImage("~/Uploads/Image/Users/", ImagePath);
+                db.Update(appUser);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                var userDetail = Session["CLogin"] as AppUser;
+                appUser.ImagePath = userDetail.ImagePath;
+
+                db.Update(appUser);
+                return RedirectToAction("Index");
+            }
+        }
+
+
+        [CustomerAuthFilter]
+        public ActionResult Logout()
+        {
+            Session.Remove("CLogin");
+            TempData.Clear();
+            return RedirectToAction("Login");
+        }
+
+        [CustomerAuthFilter]
         public ActionResult LogChange()
         {
             Session["SLogin"] = Session["CLogin"] as AppUser;
             Session.Remove("CLogin");
+            TempData.Clear();
 
             return RedirectToAction("Index", "Home", new { area = "Seller" });
         }

@@ -13,16 +13,17 @@
         {
             <div class="login-wrap">
                 @Html.Partial("PartialViews/_ErrorMsg")
+                @Html.Partial("PartialViews/_SuccessMsg")
 
                 @Html.TextBox("Email", null, new { @class = "form-control", placeholder = "E-Posta Adresi", @autofocus = "autofocus" })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                 <br />
                 @Html.TextBox("Password", null, new { @class = "form-control", placeholder = "Şifre", type = "Password" })
-
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                 <br />
                 <span class="pull-right-mycss">
                     @Html.ActionLink("Şifremi Unuttum", "ForgotPassword", "Account", new { area = "Seller" })
                 </span>
-
                 <br />
                 <button class="btn btn-lg btn-block btn-success" type="submit">Giriş</button>
             </div>

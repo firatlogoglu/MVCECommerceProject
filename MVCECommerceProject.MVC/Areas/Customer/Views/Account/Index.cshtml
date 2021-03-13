@@ -1,7 +1,7 @@
 ﻿@model MVCECommerceProject.MODEL.Entities.AppUser
 @{
     ViewBag.Title = "Profilim";
-    Layout = "~/Areas/Manegement/Views/Shared/_Layout.cshtml";
+    Layout = "~/Areas/Customer/Views/Shared/_Layout.cshtml";
 }
 
 <div class="card shadow mb-4">
@@ -179,20 +179,7 @@
                             {
                                 <td>Müşteri-Satıcı</td>
                             }
-                            else if (Model.Role == MVCECommerceProject.MODEL.Enums.Role.Admin)
-                            {
-                                <td>Yönetici</td>
-                            }
-                            else if (Model.Role == MVCECommerceProject.MODEL.Enums.Role.Banned)
-                            {
-                                <td>Yasaklı</td>
-                            }
-                            else if (Model.Role == MVCECommerceProject.MODEL.Enums.Role.Member)
-                            {
-                                <td>Member</td>
-                            }
                         }
-
                     </tr>
                 </tbody>
             </table>

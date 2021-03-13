@@ -2106,6 +2106,14 @@
     <Content Include="Areas\Customer\Views\Home\About.cshtml" />
     <Content Include="Areas\Customer\Views\Home\Contact.cshtml" />
     <Content Include="Areas\Customer\Views\Account\Register.cshtml" />
+    <Content Include="Areas\Customer\Views\Account\Index.cshtml" />
+    <Content Include="Areas\Customer\Views\Account\Edit.cshtml" />
+    <Content Include="Areas\Customer\Views\Shared\PartialViews\_SuccessMsg.cshtml" />
+    <Content Include="Areas\Manegement\Views\Shared\PartialViews\_SuccessMsg.cshtml" />
+    <Content Include="Areas\Seller\Views\Shared\PartialViews\_SuccessMsg.cshtml" />
+    <Content Include="Areas\Seller\Views\Account\Edit.cshtml" />
+    <Content Include="Areas\Manegement\Views\Account\Edit.cshtml" />
+    <Content Include="Views\Shared\PartialViews\_PageTop.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

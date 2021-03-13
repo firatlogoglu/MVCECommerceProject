@@ -9,6 +9,8 @@ namespace MVCECommerceProject.MODEL.Context
     {
         protected override void Seed(ProjectContext context)
         {
+
+            string imgpath = "/Uploads/Image/Users/no_photo.jpg";
             #region Müsteriler
 
             IList<AppUser> appusers = new List<AppUser>();
@@ -36,7 +38,9 @@ namespace MVCECommerceProject.MODEL.Context
                 Role = Enums.Role.Customer,
                 PhoneNumber = "05350000000",
                 Address = "Havaalanı yolu",
-                Status = CORE.Enums.Status.Active
+                Status = CORE.Enums.Status.Active,
+                ImagePath = imgpath
+
             });
 
             appusers.Add(new AppUser()
@@ -56,7 +60,8 @@ namespace MVCECommerceProject.MODEL.Context
                 Role = Enums.Role.Customer,
                 Address = "Atatürk Cad.",
                 Status = CORE.Enums.Status.Active,
-                PhoneNumber = "2120000000"
+                PhoneNumber = "2120000000",
+                ImagePath = imgpath
             });
 
             appusers.Add(new AppUser()
@@ -76,7 +81,8 @@ namespace MVCECommerceProject.MODEL.Context
                 Role = Enums.Role.Customer,
                 Address = "Yukarı Yol Cad.",
                 Status = CORE.Enums.Status.Active,
-                PhoneNumber = "21200000123"
+                PhoneNumber = "21200000123",
+                ImagePath = imgpath
             });
 
             appusers.Add(new AppUser()
@@ -96,7 +102,8 @@ namespace MVCECommerceProject.MODEL.Context
                 Role = Enums.Role.Customer,
                 Address = "Kestirme Sok.",
                 Status = CORE.Enums.Status.Active,
-                PhoneNumber = "21200000336"
+                PhoneNumber = "21200000336",
+                ImagePath = imgpath
             });
 
             appusers.Add(new AppUser()
@@ -115,7 +122,8 @@ namespace MVCECommerceProject.MODEL.Context
                 ConfirmPassword = "32145",
                 Role = Enums.Role.Customer,
                 Address = "Çıkmaz Sok.",
-                Status = CORE.Enums.Status.Active
+                Status = CORE.Enums.Status.Active,
+                ImagePath = imgpath
             });
             context.Users.AddRange(appusers);
             #endregion
@@ -133,100 +141,105 @@ namespace MVCECommerceProject.MODEL.Context
             appusers2.Add(new AppUser()
             {
                 ID = emp1,
-                TCNO = "11111111111",
+                TCNO = "211111111",
                 BirthDate = new DateTime(1990, 4, 1),
                 BirthPlace = "İstanbul",
                 Name = "Mehmet",
-                SurName = "Gün",
+                SurName = "Güneş",
                 Gender = Enums.Person.Gender.Male,
                 BloodType = Enums.Person.BloodType.O_Positive,
                 MaritalState = Enums.Person.MaritalState.Single,
-                Email = "mehmetgun@smail.com",
+                Email = "mehmetgünes@smail.com",
                 Password = "1234",
                 ConfirmPassword = "1234",
                 Role = Enums.Role.Admin,
                 PhoneNumber = "05350000000",
                 Address = "Havaalanı yolu",
-                Status = CORE.Enums.Status.Active
+                Status = CORE.Enums.Status.Active,
+                ImagePath = imgpath
             });
 
             appusers2.Add(new AppUser()
             {
                 ID = emp2,
-                TCNO = "22222222222",
+                TCNO = "12222222222",
                 BirthDate = new DateTime(1991, 3, 1),
                 BirthPlace = "Çanakkale",
                 Name = "Ayşe",
-                SurName = "Çalışkan",
+                SurName = "Irmak",
                 Gender = Enums.Person.Gender.Female,
                 MaritalState = Enums.Person.MaritalState.Married,
                 BloodType = Enums.Person.BloodType.B_Positive,
-                Email = "aysecaliskan@smail.com",
+                Email = "ayseirmak@smail.com",
                 Password = "32145",
                 ConfirmPassword = "32145",
                 Role = Enums.Role.Admin,
                 Address = "Atatürk Cad.",
                 Status = CORE.Enums.Status.Active,
-                PhoneNumber = "2120000000"
+                PhoneNumber = "2120000000",
+                ImagePath = imgpath
             });
 
             appusers2.Add(new AppUser()
             {
                 ID = emp3,
-                TCNO = "33333333333",
+                TCNO = "23333333333",
                 BirthDate = new DateTime(1990, 5, 1),
                 BirthPlace = "Adana",
                 Name = "Fırat",
-                SurName = "Şahin",
+                SurName = "Nur",
                 Gender = Enums.Person.Gender.Male,
                 BloodType = Enums.Person.BloodType.A_Positive,
                 MaritalState = Enums.Person.MaritalState.Single,
-                Email = "firatsahin@smail.com",
+                Email = "firatnur@smail.com",
                 Password = "32145",
                 ConfirmPassword = "32145",
                 Role = Enums.Role.Admin,
                 Address = "Yukarı Yol Cad.",
                 Status = CORE.Enums.Status.Active,
-                PhoneNumber = "21200000123"
+                PhoneNumber = "21200000123",
+                ImagePath = imgpath
             });
 
             appusers2.Add(new AppUser()
             {
                 ID = emp4,
-                TCNO = "44444444444",
+                TCNO = "24444444444",
                 BirthDate = new DateTime(1993, 6, 4),
                 BirthPlace = "Tekirdağ",
                 Name = "Fatma",
-                SurName = "Irmak",
+                SurName = "Güney",
                 Gender = Enums.Person.Gender.Female,
                 BloodType = Enums.Person.BloodType.A_Positive,
                 MaritalState = Enums.Person.MaritalState.Single,
-                Email = "fatmagirmak@smail.com",
+                Email = "fatmaguney@smail.com",
                 Password = "32145",
                 ConfirmPassword = "32145",
                 Role = Enums.Role.Admin,
                 Address = "Kestirme Sok.",
                 Status = CORE.Enums.Status.Active,
-                PhoneNumber = "21200000336"
+                PhoneNumber = "21200000336",
+                ImagePath = imgpath
             });
 
             appusers2.Add(new AppUser()
             {
                 ID = emp5,
-                TCNO = "55555555555",
+                TCNO = "25555555555",
                 BirthDate = new DateTime(1988, 5, 4),
                 BirthPlace = "Hatay",
                 Name = "Ali",
-                SurName = "Gün",
+                SurName = "Dünya",
                 Gender = Enums.Person.Gender.Male,
                 BloodType = Enums.Person.BloodType.A_Positive,
                 MaritalState = Enums.Person.MaritalState.Widowed,
-                Email = "aligun@smail.com",
+                Email = "alidunya@smail.com",
                 Password = "32145",
                 ConfirmPassword = "32145",
                 Role = Enums.Role.Admin,
                 Address = "Çıkmaz Sok.",
-                Status = CORE.Enums.Status.Active
+                Status = CORE.Enums.Status.Active,
+                ImagePath = imgpath
             });
             context.Users.AddRange(appusers2);
             #endregion
@@ -243,100 +256,105 @@ namespace MVCECommerceProject.MODEL.Context
             sellers.Add(new AppUser()
             {
                 ID = s1,
-                TCNO = "11111111111",
+                TCNO = "31111111111",
                 BirthDate = new DateTime(1990, 4, 1),
                 BirthPlace = "İstanbul",
                 Name = "Mehmet",
-                SurName = "Gün",
+                SurName = "Kutup",
                 Gender = Enums.Person.Gender.Male,
                 BloodType = Enums.Person.BloodType.O_Positive,
                 MaritalState = Enums.Person.MaritalState.Single,
-                Email = "f@f.com",
+                Email = "mehmet@kutup.com",
                 Password = "1234",
                 ConfirmPassword = "1234",
                 Role = Enums.Role.Seller_Customer,
                 PhoneNumber = "05350000000",
                 Address = "Havaalanı yolu",
-                Status = CORE.Enums.Status.Active
+                Status = CORE.Enums.Status.Active,
+                ImagePath = imgpath
             });
 
             sellers.Add(new AppUser()
             {
                 ID = s2,
-                TCNO = "22222222222",
+                TCNO = "32222222222",
                 BirthDate = new DateTime(1991, 3, 1),
                 BirthPlace = "Çanakkale",
                 Name = "Ayşe",
-                SurName = "Çalışkan",
+                SurName = "Tembel",
                 Gender = Enums.Person.Gender.Female,
                 MaritalState = Enums.Person.MaritalState.Married,
                 BloodType = Enums.Person.BloodType.B_Positive,
-                Email = "aysecaliskan@smail.com",
+                Email = "aysetembel@smail.com",
                 Password = "32145",
                 ConfirmPassword = "32145",
                 Role = Enums.Role.Seller_Customer,
                 Address = "Atatürk Cad.",
                 Status = CORE.Enums.Status.Active,
-                PhoneNumber = "2120000000"
+                PhoneNumber = "2120000000",
+                ImagePath = imgpath
             });
 
             sellers.Add(new AppUser()
             {
                 ID = s3,
-                TCNO = "33333333333",
+                TCNO = "13333333333",
                 BirthDate = new DateTime(1990, 5, 1),
                 BirthPlace = "Adana",
                 Name = "Fırat",
-                SurName = "Şahin",
+                SurName = "Kartal",
                 Gender = Enums.Person.Gender.Male,
                 BloodType = Enums.Person.BloodType.A_Positive,
                 MaritalState = Enums.Person.MaritalState.Single,
-                Email = "firatsahin@smail.com",
+                Email = "firatkartal@smail.com",
                 Password = "32145",
                 ConfirmPassword = "32145",
                 Role = Enums.Role.Seller_Customer,
                 Address = "Yukarı Yol Cad.",
                 Status = CORE.Enums.Status.Active,
-                PhoneNumber = "21200000123"
+                PhoneNumber = "21200000123",
+                ImagePath = imgpath
             });
 
             sellers.Add(new AppUser()
             {
                 ID = s4,
-                TCNO = "44444444444",
+                TCNO = "34444444444",
                 BirthDate = new DateTime(1993, 6, 4),
                 BirthPlace = "Tekirdağ",
                 Name = "Fatma",
-                SurName = "Irmak",
+                SurName = "Çelikçi",
                 Gender = Enums.Person.Gender.Female,
                 BloodType = Enums.Person.BloodType.A_Positive,
                 MaritalState = Enums.Person.MaritalState.Single,
-                Email = "fatmagirmak@smail.com",
+                Email = "fatmacelikci@smail.com",
                 Password = "32145",
                 ConfirmPassword = "32145",
                 Role = Enums.Role.Seller_Customer,
                 Address = "Kestirme Sok.",
                 Status = CORE.Enums.Status.Active,
-                PhoneNumber = "21200000336"
+                PhoneNumber = "21200000336",
+                ImagePath = imgpath
             });
 
             sellers.Add(new AppUser()
             {
                 ID = s5,
-                TCNO = "55555555555",
+                TCNO = "35555555555",
                 BirthDate = new DateTime(1988, 5, 4),
                 BirthPlace = "Hatay",
                 Name = "Ali",
-                SurName = "Gün",
+                SurName = "Sabırlı",
                 Gender = Enums.Person.Gender.Male,
                 BloodType = Enums.Person.BloodType.A_Positive,
                 MaritalState = Enums.Person.MaritalState.Widowed,
-                Email = "aligun@smail.com",
+                Email = "alisabirli@smail.com",
                 Password = "32145",
                 ConfirmPassword = "32145",
                 Role = Enums.Role.Seller_Customer,
                 Address = "Çıkmaz Sok.",
-                Status = CORE.Enums.Status.Active
+                Status = CORE.Enums.Status.Active,
+                ImagePath = imgpath
             });
             context.Users.AddRange(sellers);
             #endregion

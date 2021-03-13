@@ -51,17 +51,21 @@
                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 @if (TempData["User"] != null)
                 {
-    <span class="mr-2 d-none d-lg-inline text-gray-600 small">@TempData["User"]</span> }
-else
-{
-<span class="mr-2 d-none d-lg-inline text-gray-600 small">Giriş Yap</span>}
+                  <span class="mr-2 d-none d-lg-inline text-gray-600 small">@TempData["User"]</span> 
+                }
+                else
+                {
+                  <span class="mr-2 d-none d-lg-inline text-gray-600 small">Giriş Yap</span>
+                }
 
                 @if (TempData["UserImg"] != null)
                 {
-    <img src="~@TempData["UserImg"]" class="img-profile rounded-circle" /> }
-else
-{
-<img src="~/Content/img/login.png" class="img-profile rounded-circle" />}
+                   <img src="@TempData["UserImg"]" class="img-profile rounded-circle" /> 
+                }
+                else
+                {
+                   <img src="~/Content/img/login.png" class="img-profile rounded-circle" />
+                }
             </a>
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -72,16 +76,16 @@ else
                     <a class="dropdown-item" href="@Url.Action("Index", "Account", new { area = "Manegement" })">
                       <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                         Profilim
-                     </a>
+                    </a>
                     <a class="dropdown-item" href="#">
-                       <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                        <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                         Settings
                     </a>
                     <a class="dropdown-item" href="@Url.Action("Logout", "Account", new { area = "Manegement" })">
                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                       Oturumu Kapat
-                    </a>              
-                 }
+                         Oturumu Kapat
+                     </a>
+                }
             </div>
         </li>
     </ul>

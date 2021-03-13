@@ -1,11 +1,8 @@
 ﻿@{
-    <div class="alert-warning">
-        @if (TempData["Error"] != null)
-        {
-            <div class="alert-warning">
-                <p style="color:red;">@TempData["Error"]</p>
-            </div>
-        }
-        <p id="errorid" style="color:red;"></p>
-    </div>
+    if (TempData["Error"] != null)
+    {
+        <div class="alert-warning">
+            <p style="color:red;">@TempData["Error"]</p>
+        </div>
+    }
 }

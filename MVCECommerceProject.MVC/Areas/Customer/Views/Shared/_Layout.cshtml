@@ -15,18 +15,18 @@
     <div id="wrapper">
         @Html.Partial("PartialViews/_Sidebar")
         <div id="content-wrapper" class="d-flex flex-column">
-            <div class="container-fluid">
-
+            <div id="content">
                 @Html.Partial("PartialViews/_TopNavbar")
-                @RenderBody()
+                <div class="container-fluid">
+                    @RenderBody()
+                </div>
             </div>
+            @Html.Partial("PartialViews/_Footer")
         </div>
     </div>
 
-    <div class="container">
-        <hr />
-        @Html.Partial("PartialViews/_Footer")
-    </div>
+    @Html.Partial("PartialViews/_PageTop")
+
     @Scripts.Render("~/Content/Sb_Admin")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryval")

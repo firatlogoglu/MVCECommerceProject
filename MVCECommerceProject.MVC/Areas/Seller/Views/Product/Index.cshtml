@@ -1,0 +1,111 @@
+﻿@model IEnumerable<MVCECommerceProject.MODEL.Entities.Product>
+@{
+    ViewBag.Title = "Ürünlerim";
+    Layout = "~/Areas/Seller/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">@ViewBag.Title</h6>
+        @Html.ActionLink("Yeni Ürün", "Create", null, new { @class = "pull-right-mycss" })
+    </div>
+    <div class="card-body">
+        @Html.Partial("PartialViews/Messages/_ErrorMsg")
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ImagePath)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ProductName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SubCategory.Name)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.UnitPrice)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UnitsInStock)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.Status)
+                        </th>
+                        <th>Düzenle | Sil</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ImagePath)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ProductName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SubCategory.Name)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.UnitPrice)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UnitsInStock)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.Status)
+                        </th>
+                        <th>Düzenle | Sil</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <img class="img-sm-mycss"
+                                     src="@item.ImagePath">
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ProductName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SubCategory.Name)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UnitPrice)
+                            </td>
+                            @if (item.UnitsInStock <= 3)
+                            {
+                                TempData["Error"] = item.ProductName + " isimli ürün, tükenmek üzeredir. Lütfen stok miktarını arttırın!";
+                                <td style="color:red">
+                                    @item.UnitsInStock
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    @item.UnitsInStock
+                                </td>
+                            }
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Status)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Düzenle", "Edit", new { id = item.ID }) |
+                                @Html.ActionLink("Sil", "Delete", new { id = item.ID })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

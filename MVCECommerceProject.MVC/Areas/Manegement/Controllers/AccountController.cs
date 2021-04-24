@@ -10,15 +10,7 @@ namespace MVCECommerceProject.MVC.Areas.Manegement.Controllers
 {
     public class AccountController : Controller
     {
-        AppUserService db;
-
-        public AccountController()
-        {
-            if (db == null)
-            {
-                db = new AppUserService();
-            }
-        }
+        private AppUserService db = new AppUserService();
 
         public ActionResult Login()
         {
@@ -26,6 +18,7 @@ namespace MVCECommerceProject.MVC.Areas.Manegement.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Login(AppUser model)
         {
             try
@@ -89,19 +82,12 @@ namespace MVCECommerceProject.MVC.Areas.Manegement.Controllers
         [ManegementAuthFilter]
         public ActionResult Edit(Guid id)
         {
-            Guid guidid = Guid.Empty;
+            TempData.Keep();
             if (TempData["User"] == null || TempData["UserImg"] == null)
             {
                 var userDetail = Session["MLogin"] as AppUser;
                 TempData["User"] = userDetail.Name + " " + userDetail.SurName;
                 TempData["UserImg"] = userDetail.ImagePath;
-                guidid = userDetail.ID;
-                TempData.Keep();
-            }
-            else
-            {
-                var userDetail = Session["MLogin"] as AppUser;
-                id = userDetail.ID;
             }
 
             if (id != null)
@@ -118,25 +104,57 @@ namespace MVCECommerceProject.MVC.Areas.Manegement.Controllers
 
         [ManegementAuthFilter]
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(HttpPostedFileBase ImagePath, AppUser appUser)
         {
+            TempData.Keep();
+            var userDetail = Session["MLogin"] as AppUser;
+            if (TempData["User"] == null || TempData["UserImg"] == null)
+            {
+                TempData["User"] = userDetail.Name + " " + userDetail.SurName;
+                TempData["UserImg"] = userDetail.ImagePath;
+            }
+
+            appUser.ModifiedBy = userDetail.Email;
+
+            if (appUser.Email != db.GetById(appUser.ID).Email)
+            {
+                if (db.CheckEmail(appUser.Email))
+                {
+                    TempData["Error"] = appUser.Email + " e-posta adresi, kayıtlarımızda mevcut.";
+                    appUser.ImagePath = db.GetById(appUser.ID).ImagePath;
+                    return View(appUser);
+                }
+            }
+
+            if (appUser.TCNO != db.GetById(appUser.ID).TCNO)
+            {
+                if (db.CheckTCNO(appUser.TCNO))
+                {
+                    TempData["Error"] = appUser.TCNO + " TCKNO, kayıtlarımızda mevcut.";
+                    appUser.ImagePath = db.GetById(appUser.ID).ImagePath;
+                    return View(appUser);
+                }
+            }
+
             if (ImagePath != null)
             {
                 appUser.ImagePath = ImageUploader.UploadSingleImage("~/Uploads/Image/Users/", ImagePath);
                 db.Update(appUser);
+
                 return RedirectToAction("Index");
             }
             else
             {
-                var userDetail = Session["MLogin"] as AppUser;
                 appUser.ImagePath = userDetail.ImagePath;
-
                 db.Update(appUser);
+
                 return RedirectToAction("Index");
             }
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult ForgotPassword(string mail)
         {
             if (mail == string.Empty)

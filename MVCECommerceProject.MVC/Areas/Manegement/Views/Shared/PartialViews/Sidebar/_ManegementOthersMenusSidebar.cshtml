@@ -1,0 +1,84 @@
+﻿@{ if(TempData["User"] != null)
+    {
+<li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#product"
+       aria-expanded="true" aria-controls="collapseUtilities">
+        <i class="fas fa fa-shopping-bag fa-sm fa-fw mr-2 text-gray-400"></i>
+        <span>Ürün</span>
+    </a>
+    <div id="product" class="collapse" aria-labelledby="headingUtilities"
+         data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Ürün</h6>
+            <a class="collapse-item" href="@Url.Action("Index", "Product")">Ürünler</a>
+            <a class="collapse-item" href="@Url.Action("Create", "Product")">Yeni Ürün Ekle</a>
+        </div>
+    </div>
+</li>
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#seller"
+                       aria-expanded="true" aria-controls="collapseUtilities">
+                        <i class="fas fa fa-users fa-sm fa-fw mr-2 text-gray-400"></i>
+                        <span>Satıcı</span>
+                    </a>
+                    <div id="seller" class="collapse" aria-labelledby="headingUtilities"
+                         data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Satıcı</h6>
+                            <a class="collapse-item" href="@Url.Action("Index", "Seller")">Satıcılar</a>
+                            <a class="collapse-item" href="@Url.Action("Create", "Seller")">Yeni Satıcı Ekle</a>
+                        </div>
+                    </div>
+                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#customer"
+                                       aria-expanded="true" aria-controls="collapseUtilities">
+                                        <i class="fas fa fa-users fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        <span>Müşteri</span>
+                                    </a>
+                                    <div id="customer" class="collapse" aria-labelledby="headingUtilities"
+                                         data-parent="#accordionSidebar">
+                                        <div class="bg-white py-2 collapse-inner rounded">
+                                            <h6 class="collapse-header">Müşteri</h6>
+                                            <a class="collapse-item" href="@Url.Action("Index", "Customer")">Müşteriler</a>
+                                            <a class="collapse-item" href="@Url.Action("Create", "Customer")">Yeni Müşteri Ekle</a>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                                <li class="nav-item">
+                                                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#category"
+                                                       aria-expanded="true" aria-controls="collapseUtilities">
+                                                        <i class="fa fa-bars fa-sm fa-fw mr-2 text-gray-400"></i>
+                                                        <span>Kategori</span>
+                                                    </a>
+                                                    <div id="category" class="collapse" aria-labelledby="headingUtilities"
+                                                         data-parent="#accordionSidebar">
+                                                        <div class="bg-white py-2 collapse-inner rounded">
+                                                            <h6 class="collapse-header">Kategori</h6>
+                                                            <a class="collapse-item" href="@Url.Action("Index", "Category")">Kategoriler</a>
+                                                            <a class="collapse-item" href="@Url.Action("Create", "Category")">Yeni Kategori Ekle</a>
+
+                                                        </div>
+                                                    </div>
+                                                </li>
+
+                                                                <li class="nav-item">
+                                                                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#subcategory"
+                                                                       aria-expanded="true" aria-controls="collapseUtilities">
+                                                                        <i class="fa fa-bars fa-sm fa-fw mr-2 text-gray-400"></i>
+                                                                        <span>Alt Kategori</span>
+                                                                    </a>
+                                                                    <div id="subcategory" class="collapse" aria-labelledby="headingUtilities"
+                                                                         data-parent="#accordionSidebar">
+                                                                        <div class="bg-white py-2 collapse-inner rounded">
+                                                                            <h6 class="collapse-header">Alt Kategori</h6>
+                                                                            <a class="collapse-item" href="@Url.Action("Index", "SubCategory")">Alt Kategoriler</a>
+                                                                            <a class="collapse-item" href="@Url.Action("Create", "SubCategory")">Yeni Alt Kategori Ekle</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </li> 
+                                                                } 
+    }

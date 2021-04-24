@@ -8,7 +8,7 @@ namespace MVCECommerceProject.CORE.Map
         public CoreMap()
         {
             Property(x => x.Status).HasColumnName("Status").IsOptional();
-            Property(x => x.CreatedDate).HasColumnName("CreatedDate").IsOptional();
+            Property(x => x.CreatedDate).HasColumnName("CreatedDate");
         }
     }
 }

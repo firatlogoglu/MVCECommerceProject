@@ -1,0 +1,79 @@
+﻿@model MVCECommerceProject.MODEL.Entities.Product
+@{
+    ViewBag.Title = Model.ProductName + " İsimli Ürünü Sil";
+    Layout = "~/Areas/Manegement/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">@ViewBag.Title</h6>
+    </div>
+    <div class="card-body">
+        <h3>Bu ürünü silmek istediğinize emin misiniz?</h3>
+        <div>
+            <dl class="dl-horizontal">
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ImagePath)
+                </dt>
+
+                <dd>
+                    <img src="@Model.ImagePath" class="img-sm-mycss" />
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ProductName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ProductName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.SubCategory.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.SubCategory.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.UnitPrice)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.UnitPrice)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.UnitsInStock)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.UnitsInStock)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Status)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Status)
+                </dd>
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Sil" class="btn btn-lg btn-block btn-danger" />
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Tüm Ürünlere Geri Dön", "Index")
+</div>

@@ -9,6 +9,284 @@
         <h6 class="m-0 font-weight-bold text-primary">@ViewBag.Title - @TempData["User"] Hoşgeldiniz</h6>
     </div>
     <div class="card-body">
+        <h3>Tüm Ürünler</h3>
+        @Html.Partial("~/Views/Shared/PartialViews/Messages/_ErrorMsg.cshtml")
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
 
+                    <tr>
+                        <th>
+                            Görsel
+                        </th>
+                        <th>
+                            Ürün Adı
+                        </th>
+                        <th>
+                            Birim Fiyat
+                        </th>
+                        <th>
+                            Stok Miktarı
+                        </th>
+                        <th>
+                            Düzenle  |  Sil
+                        </th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>
+                            Görsel
+                        </th>
+                        <th>
+                            Ürün Adı
+                        </th>
+                        <th>
+                            Birim Fiyat
+                        </th>
+                        <th>
+                            Stok Miktarı
+                        </th>
+                        <th>
+                            Düzenle  |  Sil
+                        </th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach (var item in ViewData["AllProduct"] as List<MVCECommerceProject.MODEL.Entities.Product>)
+                    {
+                        <tr>
+                            @if (item.ImagePath == null || item.ImagePath == "1" || item.ImagePath == "2" || item.ImagePath == "3")
+                            {
+                                <td>
+                                    <img src="~/Content/img/login.png" class="img-sm-mycss" />
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    <img src="@item.ImagePath" class="img-sm-mycss" />
+                                </td>
+                            }
+
+                            <td>@item.ProductName</td>
+
+                            <td>@item.UnitPrice</td>
+
+                            @if (item.UnitsInStock <= 3)
+                            {
+                                TempData["Error"] = item.ProductName + " isimli ürün, tükenmek üzeredir. Lütfen stok miktarını arttırın!";
+                                <td style="color:red">
+                                    @item.UnitsInStock
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    @item.UnitsInStock
+                                </td>
+                            }
+
+                            <td>
+                                <a href="@Url.Action("Edit", "Product", new { area = "Seller", id = item.ID })">
+                                    Düzenle
+                                </a>
+                                |
+                                <a href="@Url.Action("Delete", "Product", new { area = "Seller", id = item.ID })">
+                                    Sil
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <br />
+        <br />
+        <h3>Aktif Ürünler</h3>
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+
+                    <tr>
+                        <th>
+                            Görsel
+                        </th>
+                        <th>
+                            Ürün Adı
+                        </th>
+                        <th>
+                            Birim Fiyat
+                        </th>
+                        <th>
+                            Stok Miktarı
+                        </th>
+                        <th>
+                            Düzenle  |  Sil
+                        </th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>
+                            Görsel
+                        </th>
+                        <th>
+                            Ürün Adı
+                        </th>
+                        <th>
+                            Birim Fiyat
+                        </th>
+                        <th>
+                            Stok Miktarı
+                        </th>
+                        <th>
+                            Düzenle  |  Sil
+                        </th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach (var item in ViewData["ActiveProduct"] as List<MVCECommerceProject.MODEL.Entities.Product>)
+                    {
+                        <tr>
+                            @if (item.ImagePath == null || item.ImagePath == "1" || item.ImagePath == "2" || item.ImagePath == "3")
+                            {
+                                <td>
+                                    <img src="~/Content/img/login.png" class="img-sm-mycss" />
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    <img src="@item.ImagePath" class="img-sm-mycss" />
+                                </td>
+                            }
+
+                            <td>@item.ProductName</td>
+
+                            <td>@item.UnitPrice</td>
+
+                            @if (item.UnitsInStock <= 3)
+                            {
+                                TempData["Error"] = item.ProductName + " isimli ürün, tükenmek üzeredir. Lütfen stok miktarını arttırın!";
+                                <td style="color:red">
+                                    @item.UnitsInStock
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    @item.UnitsInStock
+                                </td>
+                            }
+
+                            <td>
+                                <a href="@Url.Action("Edit", "Product", new { area = "Seller", id = item.ID })">
+                                    Düzenle
+                                </a>
+                                |
+                                <a href="@Url.Action("Delete", "Product", new { area = "Seller", id = item.ID })">
+                                    Sil
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <br />
+        <br />
+        <h3>Aktif Olmayan Ürünler</h3>
+        <div class="table-responsive">
+
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+
+                    <tr>
+                        <th>
+                            Görsel
+                        </th>
+                        <th>
+                            Ürün Adı
+                        </th>
+                        <th>
+                            Birim Fiyat
+                        </th>
+                        <th>
+                            Stok Miktarı
+                        </th>
+                        <th>
+                            Düzenle  |  Sil
+                        </th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>
+                            Görsel
+                        </th>
+                        <th>
+                            Ürün Adı
+                        </th>
+                        <th>
+                            Birim Fiyat
+                        </th>
+                        <th>
+                            Stok Miktarı
+                        </th>
+                        <th>
+                            Düzenle  |  Sil
+                        </th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach (var item in ViewData["DeletedProduct"] as List<MVCECommerceProject.MODEL.Entities.Product>)
+                    {
+                        <tr>
+                            @if (item.ImagePath == null || item.ImagePath == "1" || item.ImagePath == "2" || item.ImagePath == "3")
+                            {
+                                <td>
+                                    <img src="~/Content/img/login.png" class="img-sm-mycss" />
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    <img src="@item.ImagePath" class="img-sm-mycss" />
+                                </td>
+                            }
+
+                            <td>@item.ProductName</td>
+
+                            <td>@item.UnitPrice</td>
+
+                            @if (item.UnitsInStock <= 3)
+                            {
+                                TempData["Error"] = item.ProductName + " isimli ürün, tükenmek üzeredir. Lütfen stok miktarını arttırın!";
+                                <td style="color:red">
+                                    @item.UnitsInStock
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    @item.UnitsInStock
+                                </td>
+                            }
+                            <td>
+                                <a href="@Url.Action("Edit", "Product", new { area = "Seller", id = item.ID })">
+                                    Düzenle
+                                </a>
+                                |
+                                <a href="@Url.Action("Delete", "Product", new { area = "Seller", id = item.ID })">
+                                    Sil
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>

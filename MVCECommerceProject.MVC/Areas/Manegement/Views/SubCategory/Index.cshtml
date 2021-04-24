@@ -1,0 +1,107 @@
+﻿@model IEnumerable<MVCECommerceProject.MODEL.Entities.SubCategory>
+@{
+    ViewBag.Title = "Alt Kategoriler";
+    Layout = "~/Areas/Manegement/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">@ViewBag.Title</h6>
+        @Html.ActionLink("Yeni Kategori Ekle", "Create", null, new { @class = "pull-right-mycss" })
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ImagePath)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Tag)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Description)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Category.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Status)
+                        </th>
+                        <th>Düzenle | Sil | Ürünler</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ImagePath)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Tag)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Description)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Category.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Status)
+                        </th>
+                        <th>
+                        <th>Düzenle | Sil | Ürünler</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            @if (item.ImagePath == null || item.ImagePath == "1" || item.ImagePath == "2" || item.ImagePath == "3")
+                            {
+                                <td>
+                                    <img src="~/Content/img/login.png" class="img-sm-mycss" />
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    <img src="@item.ImagePath" class="img-sm-mycss" />
+                                </td>
+                            }
+
+                            <td>
+                                <a href="@Url.Action("Details", "SubCategory", new { area = "Manegement", id = item.ID })">
+                                    @item.Name
+                                </a>
+                            </td>
+                            <td>@item.Tag</td>
+                            <td>@item.Description</td>
+                            <td>
+                                <a href="@Url.Action("Details", "Category", new { area = "Manegement", id = item.CategoryID })">
+                                    @item.Category.Name
+                                </a>
+                            </td>
+                            <td>@item.Status</td>
+                            <td>
+                                @Html.ActionLink("Düzenle", "Edit", new { id = item.ID }) |
+                                @Html.ActionLink("Sil", "Delete", new { id = item.ID })
+                                <a href="@Url.Action("FindSubCategoryProducts", "Product", new { area = "Manegement", id = item.ID })">
+                                    @item.Name Ürünleri
+                                </a> |
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

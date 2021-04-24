@@ -9,8 +9,9 @@ namespace MVCECommerceProject.MODEL.Context
     {
         protected override void Seed(ProjectContext context)
         {
-
             string imgpath = "/Uploads/Image/Users/no_photo.jpg";
+            string UserBy = "Server";
+
             #region Müsteriler
 
             IList<AppUser> appusers = new List<AppUser>();
@@ -39,8 +40,8 @@ namespace MVCECommerceProject.MODEL.Context
                 PhoneNumber = "05350000000",
                 Address = "Havaalanı yolu",
                 Status = CORE.Enums.Status.Active,
+                CreatedBy = UserBy,
                 ImagePath = imgpath
-
             });
 
             appusers.Add(new AppUser()
@@ -61,6 +62,7 @@ namespace MVCECommerceProject.MODEL.Context
                 Address = "Atatürk Cad.",
                 Status = CORE.Enums.Status.Active,
                 PhoneNumber = "2120000000",
+                CreatedBy = UserBy,
                 ImagePath = imgpath
             });
 
@@ -82,6 +84,7 @@ namespace MVCECommerceProject.MODEL.Context
                 Address = "Yukarı Yol Cad.",
                 Status = CORE.Enums.Status.Active,
                 PhoneNumber = "21200000123",
+                CreatedBy = UserBy,
                 ImagePath = imgpath
             });
 
@@ -103,6 +106,7 @@ namespace MVCECommerceProject.MODEL.Context
                 Address = "Kestirme Sok.",
                 Status = CORE.Enums.Status.Active,
                 PhoneNumber = "21200000336",
+                CreatedBy = UserBy,
                 ImagePath = imgpath
             });
 
@@ -123,6 +127,7 @@ namespace MVCECommerceProject.MODEL.Context
                 Role = Enums.Role.Customer,
                 Address = "Çıkmaz Sok.",
                 Status = CORE.Enums.Status.Active,
+                CreatedBy = UserBy,
                 ImagePath = imgpath
             });
             context.Users.AddRange(appusers);
@@ -149,13 +154,14 @@ namespace MVCECommerceProject.MODEL.Context
                 Gender = Enums.Person.Gender.Male,
                 BloodType = Enums.Person.BloodType.O_Positive,
                 MaritalState = Enums.Person.MaritalState.Single,
-                Email = "mehmetgünes@smail.com",
+                Email = "mehmetgunes@smail.com",
                 Password = "1234",
                 ConfirmPassword = "1234",
                 Role = Enums.Role.Admin,
                 PhoneNumber = "05350000000",
                 Address = "Havaalanı yolu",
                 Status = CORE.Enums.Status.Active,
+                CreatedBy = UserBy,
                 ImagePath = imgpath
             });
 
@@ -176,6 +182,7 @@ namespace MVCECommerceProject.MODEL.Context
                 Role = Enums.Role.Admin,
                 Address = "Atatürk Cad.",
                 Status = CORE.Enums.Status.Active,
+                CreatedBy = UserBy,
                 PhoneNumber = "2120000000",
                 ImagePath = imgpath
             });
@@ -198,6 +205,7 @@ namespace MVCECommerceProject.MODEL.Context
                 Address = "Yukarı Yol Cad.",
                 Status = CORE.Enums.Status.Active,
                 PhoneNumber = "21200000123",
+                CreatedBy = UserBy,
                 ImagePath = imgpath
             });
 
@@ -219,6 +227,7 @@ namespace MVCECommerceProject.MODEL.Context
                 Address = "Kestirme Sok.",
                 Status = CORE.Enums.Status.Active,
                 PhoneNumber = "21200000336",
+                CreatedBy = UserBy,
                 ImagePath = imgpath
             });
 
@@ -239,10 +248,12 @@ namespace MVCECommerceProject.MODEL.Context
                 Role = Enums.Role.Admin,
                 Address = "Çıkmaz Sok.",
                 Status = CORE.Enums.Status.Active,
+                CreatedBy = UserBy,
                 ImagePath = imgpath
             });
             context.Users.AddRange(appusers2);
             #endregion
+
             #region Satıcılar
 
             IList<AppUser> sellers = new List<AppUser>();
@@ -271,6 +282,7 @@ namespace MVCECommerceProject.MODEL.Context
                 PhoneNumber = "05350000000",
                 Address = "Havaalanı yolu",
                 Status = CORE.Enums.Status.Active,
+                CreatedBy = UserBy,
                 ImagePath = imgpath
             });
 
@@ -292,6 +304,7 @@ namespace MVCECommerceProject.MODEL.Context
                 Address = "Atatürk Cad.",
                 Status = CORE.Enums.Status.Active,
                 PhoneNumber = "2120000000",
+                CreatedBy = UserBy,
                 ImagePath = imgpath
             });
 
@@ -313,6 +326,7 @@ namespace MVCECommerceProject.MODEL.Context
                 Address = "Yukarı Yol Cad.",
                 Status = CORE.Enums.Status.Active,
                 PhoneNumber = "21200000123",
+                CreatedBy = UserBy,
                 ImagePath = imgpath
             });
 
@@ -334,6 +348,7 @@ namespace MVCECommerceProject.MODEL.Context
                 Address = "Kestirme Sok.",
                 Status = CORE.Enums.Status.Active,
                 PhoneNumber = "21200000336",
+                CreatedBy = UserBy,
                 ImagePath = imgpath
             });
 
@@ -354,9 +369,138 @@ namespace MVCECommerceProject.MODEL.Context
                 Role = Enums.Role.Seller_Customer,
                 Address = "Çıkmaz Sok.",
                 Status = CORE.Enums.Status.Active,
+                CreatedBy = UserBy,
                 ImagePath = imgpath
             });
             context.Users.AddRange(sellers);
+            #endregion
+
+            #region Kategoriler
+            Guid c1 = Guid.NewGuid();
+            Guid c2 = Guid.NewGuid();
+            Guid c3 = Guid.NewGuid();
+            Guid c4 = Guid.NewGuid();
+            Guid c5 = Guid.NewGuid();
+
+
+            #region Alt Kategoriler  - Elektronik
+            SubCategory sub1 = new SubCategory()
+            {
+                ID = Guid.NewGuid(),
+                CategoryID = c1,
+                Name = "Cep Telefonu ve Aksesuar",
+                Tag = "Cep Telefonu, Aksesuar",
+                Description = "Cep Telefonu ve Aksesuar",
+                ImagePath = imgpath,
+                CreatedBy = UserBy,
+                Status = CORE.Enums.Status.Active
+            };
+
+            SubCategory sub2 = new SubCategory()
+            {
+                ID = Guid.NewGuid(),
+                CategoryID = c1,
+                Name = "Bilgisayar, Tablet",
+                Tag = "Bilgisayar, Tablet",
+                Description = "Bilgisayar, Tablet",
+                ImagePath = imgpath,
+                CreatedBy = UserBy,
+                Status = CORE.Enums.Status.Active
+            };
+
+            SubCategory sub3 = new SubCategory()
+            {
+                ID = Guid.NewGuid(),
+                CategoryID = c1,
+                Name = "Beyaz Eşya & Küçük Ev Aletleri",
+                Tag = "Beyaz Eşya, Küçük Ev Aletleri",
+                Description = "Beyaz Eşya & Küçük Ev Aletleri",
+                ImagePath = imgpath,
+                CreatedBy = UserBy,
+                Status = CORE.Enums.Status.Active
+            };
+
+            SubCategory sub4 = new SubCategory()
+            {
+                ID = Guid.NewGuid(),
+                CategoryID = c1,
+                Name = "TV, Ses ve Görüntü Sistemleri",
+                Tag = "TV, Ses, Görüntü Sistemleri",
+                Description = "TV, Ses ve Görüntü Sistemleri",
+                ImagePath = imgpath,
+                CreatedBy = UserBy,
+                Status = CORE.Enums.Status.Active
+            };
+
+            SubCategory sub5 = new SubCategory()
+            {
+                ID = Guid.NewGuid(),
+                CategoryID = c1,
+                Name = "Fotoğraf & Kamera",
+                Tag = "Fotoğraf, Kamera",
+                Description = "Fotoğraf & Kamera",
+                ImagePath = imgpath,
+                CreatedBy = UserBy,
+                Status = CORE.Enums.Status.Active
+            };
+
+            SubCategory sub6 = new SubCategory()
+            {
+                ID = Guid.NewGuid(),
+                CategoryID = c1,
+                Name = "Video Oyun & Konsol",
+                Tag = "Video Oyun, Konsol",
+                Description = "Video Oyun & Konsol",
+                ImagePath = imgpath,
+                CreatedBy = UserBy,
+                Status = CORE.Enums.Status.Active
+            };
+
+            SubCategory sub7 = new SubCategory()
+            {
+                ID = Guid.NewGuid(),
+                CategoryID = c2,
+                Name = "Mobilya",
+                Tag = "Mobilya",
+                Description = "Mobilya",
+                ImagePath = imgpath,
+                CreatedBy = UserBy,
+                Status = CORE.Enums.Status.Active
+            };
+            #endregion
+
+            IList<Category> categories = new List<Category>();
+
+
+            categories.Add(new Category()
+            {
+                ID = c1,
+                Name = "Elektronik",
+                Description = "Elektronik",
+                ImagePath = imgpath,
+                CreatedBy = UserBy,
+                SubCategories = new List<SubCategory>()
+                {
+                   sub1,sub2,sub3,sub4,sub5,sub6
+                },
+                Status = CORE.Enums.Status.Active
+            });
+
+            categories.Add(new Category()
+            {
+                ID = c2,
+                Name = "Ev, Dekorasyon, Bahçe",
+                Description = "Ev, Dekorasyon, Bahçe",
+                ImagePath = imgpath,
+                CreatedBy = UserBy,
+                SubCategories = new List<SubCategory>()
+                {
+                   sub7
+                },
+                Status = CORE.Enums.Status.Active
+            });
+            context.Categories.AddRange(categories);
+
             #endregion
         }
     }

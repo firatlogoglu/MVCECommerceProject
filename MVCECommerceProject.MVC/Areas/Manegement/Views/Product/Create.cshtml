@@ -1,0 +1,61 @@
+﻿@model MVCECommerceProject.MODEL.Entities.Product
+
+@{
+    ViewBag.Title = "Yeni Ürün Ekle";
+    Layout = "~/Areas/Manegement/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Create", "Product", FormMethod.Post, new { @class = "form-signin", enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.Partial("PartialViews/Messages/_ErrorMsg")
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProductName, htmlAttributes: new { @class = "control-label" })
+            @Html.EditorFor(model => model.ProductName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ProductName, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UnitPrice, htmlAttributes: new { @class = "control-label" })
+            @Html.EditorFor(model => model.UnitPrice, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.UnitPrice, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UnitsInStock, htmlAttributes: new { @class = "control-label" })
+            @Html.EditorFor(model => model.UnitsInStock, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.UnitsInStock, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ImagePath, htmlAttributes: new { @class = "control-label" })
+            <input type="file" class="form-control" name="ImagePath" required />
+            @Html.ValidationMessageFor(model => model.ImagePath, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SubCategory.Name, htmlAttributes: new { @class = "control-label" })
+            @Html.DropDownList("SubCategoryID", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.SubCategoryID, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Satıcının E-posta Adresi", htmlAttributes: new { @class = "control-label" })
+            @Html.DropDownList("SellerID", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.SellerID, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2">
+                <input type="submit" value="Kaydet" class="btn btn-lg btn-block btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Tüm Ürünlere Geri Dön", "Index")
+</div>

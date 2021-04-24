@@ -8,6 +8,8 @@ namespace MVCECommerceProject.MODEL.Map
         public ProductMap()
         {
             ToTable("dbo.Products");
+
+            Property(x => x.SellerID).HasColumnName("SID").IsOptional();
         }
     }
 }

@@ -9,40 +9,37 @@ namespace MVCECommerceProject.MVC.Areas.Manegement.Controllers
     {
         public ActionResult Index()
         {
+            TempData.Keep();
             if (TempData["User"] == null || TempData["UserImg"] == null)
             {
                 var userDetail = Session["MLogin"] as AppUser;
                 TempData["User"] = userDetail.Name + " " + userDetail.SurName;
                 TempData["UserImg"] = userDetail.ImagePath;
-                TempData.Keep();
             }
-
             return View();
         }
 
         public ActionResult About()
         {
+            TempData.Keep();
             if (TempData["User"] == null || TempData["UserImg"] == null)
             {
                 var userDetail = Session["MLogin"] as AppUser;
                 TempData["User"] = userDetail.Name + " " + userDetail.SurName;
                 TempData["UserImg"] = userDetail.ImagePath;
-                TempData.Keep();
             }
-
             return View();
         }
 
         public ActionResult Contact()
         {
+            TempData.Keep();
             if (TempData["User"] == null || TempData["UserImg"] == null)
             {
                 var userDetail = Session["MLogin"] as AppUser;
                 TempData["User"] = userDetail.Name + " " + userDetail.SurName;
                 TempData["UserImg"] = userDetail.ImagePath;
-                TempData.Keep();
             }
-
             return View();
         }
     }

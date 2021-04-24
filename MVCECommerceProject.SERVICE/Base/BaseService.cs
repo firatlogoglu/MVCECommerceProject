@@ -46,6 +46,11 @@ namespace MVCECommerceProject.SERVICE.Base
             return db.Set<T>().Where(x => x.Status == CORE.Enums.Status.Active).ToList();
         }
 
+        public List<T> GetDeleted()
+        {
+            return db.Set<T>().Where(x => x.Status == CORE.Enums.Status.Deleted).ToList();
+        }
+
         public List<T> GetAll()
         {
             return db.Set<T>().ToList();

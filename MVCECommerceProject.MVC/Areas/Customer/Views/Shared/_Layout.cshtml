@@ -9,14 +9,15 @@
     @Styles.Render("~/Content/Sb_Admin_2")
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
           rel="stylesheet">
+    @Styles.Render("~/Content/Sb_Admin_2/vendor/datatablescss")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body id="page-top">
     <div id="wrapper">
-        @Html.Partial("PartialViews/_Sidebar")
+        @Html.Partial("PartialViews/Sidebar/_Sidebar")
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
-                @Html.Partial("PartialViews/_TopNavbar")
+                @Html.Partial("PartialViews/TopNavbar/_TopNavbar")
                 <div class="container-fluid">
                     @RenderBody()
                 </div>
@@ -28,8 +29,7 @@
     @Html.Partial("PartialViews/_PageTop")
 
     @Scripts.Render("~/Content/Sb_Admin")
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Content/Sb_Admin_2/vendor/datatables")
     @RenderSection("scripts", required: false)
 </body>
 </html>

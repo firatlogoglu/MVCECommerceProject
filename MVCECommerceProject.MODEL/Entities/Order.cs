@@ -11,8 +11,10 @@ namespace MVCECommerceProject.MODEL.Entities
             OrderDetails = new List<OrderDetail>();
         }
 
-        public Guid AppUserID { get; set; }
-        public virtual AppUser AppUser { get; set; }
+        public Guid SellerID { get; set; }
+        public Guid CustomerID { get; set; }
+        public virtual AppUser Customer { get; set; }
+        public virtual AppUser Seller { get; set; }
         public bool Confirmed { get; set; }
 
         //Mapping

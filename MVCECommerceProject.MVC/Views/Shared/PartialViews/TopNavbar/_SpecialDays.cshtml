@@ -1,0 +1,93 @@
+﻿@{
+    int day = DateTime.Now.Day;
+    int mounth = DateTime.Now.Month;
+    string dayMounth = day + "." + mounth;
+    if (dayMounth == "01.01" || dayMounth == "1.1")
+    {
+        <li class="nav-item dropdown no-arrow mx-1">
+            <img class="nav-link" src="~/Content/img/SpecialDays/" />
+        </li>
+
+    }
+    else if (dayMounth == "23.04" || dayMounth == "23.4")
+    {
+        <li class="nav-item dropdown no-arrow mx-1">
+            <img class="nav-link" src="~/Content/img/SpecialDays/" />
+        </li>
+    }
+    else if (dayMounth == "01.05" || dayMounth == "1.5")
+    {
+        <li class="nav-item dropdown no-arrow mx-1">
+            <img class="nav-link" src="~/Content/img/SpecialDays/" />
+        </li>
+    }
+    else if (dayMounth == "19.05" || dayMounth == "19.5")
+    {
+        <li class="nav-item dropdown no-arrow mx-1">
+            <img class="nav-link" src="~/Content/img/SpecialDays/" />
+        </li>
+    }
+    else if (dayMounth == "15.07" || dayMounth == "15.7")
+    {
+        <li class="nav-item dropdown no-arrow mx-1">
+            <img class="nav-link" src="~/Content/img/SpecialDays/" />
+        </li>
+    }
+    else if (dayMounth == "30.08" || dayMounth == "30.8")
+    {
+        <li class="nav-item dropdown no-arrow mx-1">
+            <img class="nav-link" src="~/Content/img/SpecialDays/" />
+        </li>
+    }
+    else if (dayMounth == "29.10" || dayMounth == "29.10")
+    {
+        <li class="nav-item dropdown no-arrow mx-1">
+            <img class="nav-link" src="~/Content/img/SpecialDays/" />
+        </li>
+    }
+
+    if (Session["CLogin"] != null)
+    {
+        var user = Session["CLogin"] as MVCECommerceProject.MODEL.Entities.AppUser;
+
+        int bday = user.BirthDate.Value.Day;
+        int bmounth = user.BirthDate.Value.Month;
+        string bdayMounth = bday + "." + bmounth;
+        if (bdayMounth == dayMounth)
+        {
+            <li class="nav-item dropdown no-arrow mx-1">
+                <img class="nav-link" src="~/Content/img/SpecialDays/" />
+            </li>
+        }
+    }
+
+    if (Session["SLogin"] != null)
+    {
+        var user = Session["SLogin"] as MVCECommerceProject.MODEL.Entities.AppUser;
+
+        int bday = user.BirthDate.Value.Day;
+        int bmounth = user.BirthDate.Value.Month;
+        string bdayMounth = bday + "." + bmounth;
+        if (bdayMounth == dayMounth)
+        {
+            <li class="nav-item dropdown no-arrow mx-1">
+                <img class="nav-link" src="~/Content/img/SpecialDays/" />
+            </li>
+        }
+    }
+
+    if (Session["MLogin"] != null)
+    {
+        var user = Session["MLogin"] as MVCECommerceProject.MODEL.Entities.AppUser;
+
+        int bday = user.BirthDate.Value.Day;
+        int bmounth = user.BirthDate.Value.Month;
+        string bdayMounth = bday + "." + bmounth;
+        if (bdayMounth == dayMounth)
+        {
+            <li class="nav-item dropdown no-arrow mx-1">
+                <img class="nav-link" src="~/Content/img/SpecialDays/" />
+            </li>
+        }
+    }
+}

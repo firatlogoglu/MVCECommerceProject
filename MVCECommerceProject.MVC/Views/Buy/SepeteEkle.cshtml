@@ -1,0 +1,69 @@
+﻿@model MVCECommerceProject.MODEL.Entities.Product
+@{
+    ViewBag.Title = "Sepete Ekle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">@Model.ProductName - @ViewBag.Title</h6>
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.Partial("PartialViews/Messages/_ErrorMsg")
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.ID)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ImagePath, htmlAttributes: new { @class = "control-label" })
+                <div>
+                    <img src="@Model.ImagePath" class="img-sm-mycss" />
+                    <br />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Ürün Adı: </label>
+                @Html.DisplayFor(model => model.ProductName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ProductName, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label class="control-label">Ürün Fiyatı: </label>
+                @Html.DisplayFor(model => model.UnitPrice, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.UnitPrice, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label>Miktar <span style="color:red">(Stok: @ViewBag.Stock)</span></label>
+                @Html.TextBox("UnitsInStock", "1", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.UnitsInStock, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.HiddenFor(model => model.ImagePath)
+            @Html.HiddenFor(model => model.ProductName)
+            @Html.HiddenFor(model => model.UnitPrice)
+            @Html.HiddenFor(model => model.SellerID)
+            @Html.HiddenFor(model => model.SubCategoryID)
+            @Html.HiddenFor(model => model.Status)
+
+            @Html.HiddenFor(model => model.CreatedDate)
+            @Html.HiddenFor(model => model.CreatedComputerName)
+            @Html.HiddenFor(model => model.CreatedIP)
+            @Html.HiddenFor(model => model.CreatedADUsername)
+            @Html.HiddenFor(model => model.CreatedBy)
+
+            @Html.HiddenFor(model => model.ModifiedADUsername)
+            @Html.HiddenFor(model => model.ModifiedBy)
+            @Html.HiddenFor(model => model.ModifiedComputerName)
+            @Html.HiddenFor(model => model.ModifiedDate)
+            @Html.HiddenFor(model => model.ModifiedIP)
+
+            <div class="form-group">
+                <div class="col-md-offset-2">
+                    <input type="submit" value="Kaydet" class="btn btn-lg btn-block btn-success" />
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,143 @@
+﻿@model IEnumerable<MVCECommerceProject.MODEL.Entities.OrderDetail>
+@{
+    ViewBag.Title = "Siparişlerim";
+    Layout = "~/Areas/Customer/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">@TempData["User"] - @ViewBag.Title</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Product.ImagePath)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Product.ProductName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UnitPrice)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Quantity)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Discount)
+                        </th>
+                        <th>
+                            Satıcı
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Product.SubCategory.Category.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Product.SubCategory.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Status)
+                        </th>
+
+                        <th></th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>ID</th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Product.ImagePath)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Product.ProductName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UnitPrice)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Quantity)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Discount)
+                        </th>
+                        <th>
+                            Satıcı
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Product.SubCategory.Category.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Product.SubCategory.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Status)
+                        </th>
+
+                        <th></th>
+                    </tr>
+                </tfoot>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>@item.OrderID</td>
+
+                        @{
+                            if (item.Product.ImagePath == null || item.Product.ImagePath == "1" || item.Product.ImagePath == "2" || item.Product.ImagePath == "3")
+                            {
+                                <td>
+                                    <img src="~/Content/img/login.png" class="img-sm-mycss" />
+                                </td>
+
+                            }
+                            else
+                            {
+                                <td>
+                                    <img src="@item.Product.ImagePath" class="img-sm-mycss" />
+                                </td>
+                            }
+                        }
+
+                        <td>
+                            @Html.ActionLink(item.Product.ProductName, "Details", "Product", new { id = item.ProductID }, new { @class = "" })
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UnitPrice)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Quantity)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Discount)
+                        </td>
+
+                        <td>
+                            @Html.ActionLink(item.Order.Seller.Name + " " + item.Order.Seller.SurName, "Find", "Seller", new { id = item.Order.SellerID }, new { @class = "" })
+                        </td>
+
+                        <td>
+                            @Html.ActionLink(item.Product.SubCategory.Category.Name, "FindCategoryProducts", "Product", new { id = item.Product.SubCategory.CategoryID }, new { @class = "" })
+                        </td>
+
+                        <td>
+                            @Html.ActionLink(item.Product.SubCategory.Name, "FindSubCategoryProducts", "Product", new { id = item.Product.SubCategoryID }, new { @class = "" })
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Status)
+                        </td>
+
+                        <td>
+                            @Html.ActionLink("Sipariş Detayı", "OrderDetails", new { id = item.OrderID }) |
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

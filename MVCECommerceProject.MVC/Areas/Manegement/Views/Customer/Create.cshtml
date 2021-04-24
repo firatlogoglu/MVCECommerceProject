@@ -1,0 +1,174 @@
+﻿@model MVCECommerceProject.MODEL.Entities.AppUser
+@{
+    ViewBag.Title = "Yeni Müşteri Ekle";
+    Layout = "~/Areas/Manegement/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">@ViewBag.Title</h6>
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm("Create", "Customer", FormMethod.Post, new { @class = "form-signin", enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.Partial("PartialViews/Messages/_ErrorMsg")
+                @Html.HiddenFor(model => model.Password)
+                @Html.HiddenFor(model => model.ConfirmPassword)
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SurName, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.SurName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.SurName, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TCNO, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.TCNO, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.TCNO, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.BirthDate, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.BirthDate, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.BirthDate, "", new { @class = "text-danger" })
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.BirthPlace, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.BirthPlace, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.BirthPlace, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    <label for="BloodType">@Html.DisplayNameFor(model => model.BloodType)</label>
+                    <select class="form-control" id="BloodType" name="BloodType">
+                        @foreach (var item in Enum.GetValues(typeof(MVCECommerceProject.MODEL.Enums.Person.BloodType)))
+                        {
+                            if ((MVCECommerceProject.MODEL.Enums.Person.BloodType)item == MVCECommerceProject.MODEL.Enums.Person.BloodType.AB_Negative)
+                            {
+                                <option value="@item">AB Rh-</option>
+                            }
+                            else if ((MVCECommerceProject.MODEL.Enums.Person.BloodType)item == MVCECommerceProject.MODEL.Enums.Person.BloodType.AB_Positive)
+                            {
+                                <option value="@item">AB Rh+</option>
+                            }
+                            else if ((MVCECommerceProject.MODEL.Enums.Person.BloodType)item == MVCECommerceProject.MODEL.Enums.Person.BloodType.A_Negative)
+                            {
+                                <option value="@item">A Rh-</option>
+                            }
+                            else if ((MVCECommerceProject.MODEL.Enums.Person.BloodType)item == MVCECommerceProject.MODEL.Enums.Person.BloodType.A_Positive)
+                            {
+                                <option value="@item">A Rh+</option>
+                            }
+                            else if ((MVCECommerceProject.MODEL.Enums.Person.BloodType)item == MVCECommerceProject.MODEL.Enums.Person.BloodType.B_Negative)
+                            {
+                                <option value="@item">B Rh-</option>
+                            }
+                            else if ((MVCECommerceProject.MODEL.Enums.Person.BloodType)item == MVCECommerceProject.MODEL.Enums.Person.BloodType.B_Positive)
+                            {
+                                <option value="@item">B Rh+</option>
+                            }
+                            else if ((MVCECommerceProject.MODEL.Enums.Person.BloodType)item == MVCECommerceProject.MODEL.Enums.Person.BloodType.O_Negative)
+                            {
+                                <option value="@item">0 Rh-</option>
+                            }
+                            else if ((MVCECommerceProject.MODEL.Enums.Person.BloodType)item == MVCECommerceProject.MODEL.Enums.Person.BloodType.O_Positive)
+                            {
+                                <option value="@item">0 R+</option>
+                            }
+                        }
+                    </select>
+                    @Html.ValidationMessageFor(model => model.BloodType, "", new { @class = "text-danger" })
+
+                </div>
+
+                <div class="form-group">
+                    <label for="Gender">@Html.DisplayNameFor(model => model.Gender)</label>
+                    <select class="form-control" id="Gender" name="Gender">
+                        @foreach (var item in Enum.GetValues(typeof(MVCECommerceProject.MODEL.Enums.Person.Gender)))
+                        {
+                            if ((MVCECommerceProject.MODEL.Enums.Person.Gender)item == MVCECommerceProject.MODEL.Enums.Person.Gender.Female)
+                            {
+                                <option value="@item">Kadın</option>
+                            }
+                            else if ((MVCECommerceProject.MODEL.Enums.Person.Gender)item == MVCECommerceProject.MODEL.Enums.Person.Gender.Male)
+                            {
+                                <option value="@item">Erkek</option>
+                            }
+                        }
+                    </select>
+                    @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    <label for="MaritalState">@Html.DisplayNameFor(model => model.MaritalState)</label>
+                    <select class="form-control" id="MaritalState" name="MaritalState">
+                        @foreach (var item in Enum.GetValues(typeof(MVCECommerceProject.MODEL.Enums.Person.MaritalState)))
+                        {
+                            if ((MVCECommerceProject.MODEL.Enums.Person.MaritalState)item == MVCECommerceProject.MODEL.Enums.Person.MaritalState.Married)
+                            {
+                                <option value="@item">Evli</option>
+                            }
+                            else if ((MVCECommerceProject.MODEL.Enums.Person.MaritalState)item == MVCECommerceProject.MODEL.Enums.Person.MaritalState.Single)
+                            {
+                                <option value="@item">Bekar</option>
+                            }
+                            else if ((MVCECommerceProject.MODEL.Enums.Person.MaritalState)item == MVCECommerceProject.MODEL.Enums.Person.MaritalState.Widowed)
+                            {
+                                <option value="@item">Dul</option>
+                            }
+                            else if ((MVCECommerceProject.MODEL.Enums.Person.MaritalState)item == MVCECommerceProject.MODEL.Enums.Person.MaritalState.Divorce)
+                            {
+                                <option value="@item">Boşanmış</option>
+                            }
+                        }
+                    </select>
+                    @Html.ValidationMessageFor(model => model.MaritalState, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ImagePath, htmlAttributes: new { @class = "control-label" })
+                    <input type="file" class="form-control" name="ImagePath" required />
+                    @Html.ValidationMessageFor(model => model.ImagePath, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2">
+                        <input type="submit" value="Kaydet" class="btn btn-lg btn-block btn-success" />
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Tüm Müşterilere Geri Dön", "Index")
+</div>

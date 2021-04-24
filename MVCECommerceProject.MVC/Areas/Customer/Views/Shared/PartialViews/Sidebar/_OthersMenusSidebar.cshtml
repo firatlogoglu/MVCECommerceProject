@@ -1,0 +1,9 @@
+﻿@if (TempData["User"] != null)
+{
+<li class="nav-item">
+    <a class="nav-link" href="@Url.Action("Index", "Order")">
+        <i class="fas fa-fw fa-shopping-bag"></i>
+        <span>Siparişlerim</span>
+    </a>
+</li>
+}

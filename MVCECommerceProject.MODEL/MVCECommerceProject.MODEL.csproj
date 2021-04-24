@@ -49,6 +49,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CartModel\Cart.cs" />
+    <Compile Include="CartModel\CartItem.cs" />
     <Compile Include="Context\ProjectContext.cs" />
     <Compile Include="Context\SampleData.cs" />
     <Compile Include="Entities\AppUser.cs" />
@@ -80,5 +82,6 @@
       <Name>MVCECommerceProject.CORE</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

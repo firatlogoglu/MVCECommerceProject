@@ -1,0 +1,28 @@
+﻿@model MVCECommerceProject.MODEL.Entities.Category
+@{
+    ViewBag.Title = "Sil";
+    Layout = "~/Areas/Manegement/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">@Model.Name - @ViewBag.Title</h6>
+    </div>
+    <div class="card-body">
+        <h2>@Model.Name silinsin mi?</h2>
+        <div>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-actions no-color">
+                    <input type="submit" value="Sil" class="btn-danger" />
+
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Kategori Listesine Geri Dön", "Index")
+</div>

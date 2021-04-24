@@ -14,10 +14,10 @@
 </head>
 <body id="page-top">
     <div id="wrapper">
-        @Html.Partial("PartialViews/_Sidebar")
+        @Html.Partial("PartialViews/Sidebar/_Sidebar")
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
-                @Html.Partial("PartialViews/_TopNavbar")
+                @Html.Partial("PartialViews/TopNavbar/_TopNavbar")
                 <div class="container-fluid">
                     @RenderBody()
                 </div>
@@ -30,8 +30,6 @@
 
     @Scripts.Render("~/Content/Sb_Admin")
     @Scripts.Render("~/Content/Sb_Admin_2/vendor/datatables")
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/jqueryval")
     @RenderSection("scripts", required: false)
 </body>
 </html>

@@ -46,10 +46,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -127,15 +127,29 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Customer\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Customer\Controllers\BuyController.cs" />
     <Compile Include="Areas\Customer\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Customer\Controllers\OrderController.cs" />
+    <Compile Include="Areas\Customer\Controllers\ProductController.cs" />
+    <Compile Include="Areas\Customer\Controllers\SellerController.cs" />
     <Compile Include="Areas\Customer\CustomerAreaRegistration.cs" />
     <Compile Include="Areas\Manegement\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Manegement\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\Manegement\Controllers\CustomerController.cs" />
     <Compile Include="Areas\Manegement\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Manegement\Controllers\ProductController.cs" />
+    <Compile Include="Areas\Manegement\Controllers\SellerController.cs" />
+    <Compile Include="Areas\Manegement\Controllers\SubCategoryController.cs" />
     <Compile Include="Areas\Manegement\ManegementAreaRegistration.cs" />
     <Compile Include="Areas\Seller\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Seller\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Seller\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Seller\Controllers\ProductController.cs" />
     <Compile Include="Areas\Seller\SellerAreaRegistration.cs" />
+    <Compile Include="Controllers\BuyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\SellersController.cs" />
     <Compile Include="Filters\AuthorizationFilters\CustomerAuthFilter.cs" />
     <Compile Include="Filters\AuthorizationFilters\ManegementAuthFilter.cs" />
     <Compile Include="Filters\AuthorizationFilters\SellerAuthFilter.cs" />
@@ -2073,18 +2087,16 @@
     <Content Include="Areas\Manegement\Views\web.config" />
     <Content Include="Areas\Manegement\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Manegement\Views\Shared\PartialViews\_Footer.cshtml" />
-    <Content Include="Areas\Manegement\Views\Shared\PartialViews\_Sidebar.cshtml" />
-    <Content Include="Areas\Manegement\Views\Shared\PartialViews\_TopNavbar.cshtml" />
+    <Content Include="Areas\Manegement\Views\Shared\PartialViews\Sidebar\_Sidebar.cshtml" />
+    <Content Include="Areas\Manegement\Views\Shared\PartialViews\TopNavbar\_TopNavbar.cshtml" />
     <Content Include="Areas\Manegement\Views\Account\Login.cshtml" />
     <Content Include="Areas\Manegement\Views\Home\Index.cshtml" />
-    <Content Include="Areas\Manegement\Views\Shared\PartialViews\_ErrorMsg.cshtml" />
     <Content Include="Areas\Manegement\Views\Account\ForgotPassword.cshtml" />
     <Content Include="Areas\Customer\Views\web.config" />
     <Content Include="Areas\Customer\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Customer\Views\Shared\PartialViews\_ErrorMsg.cshtml" />
     <Content Include="Areas\Customer\Views\Shared\PartialViews\_Footer.cshtml" />
-    <Content Include="Areas\Customer\Views\Shared\PartialViews\_Sidebar.cshtml" />
-    <Content Include="Areas\Customer\Views\Shared\PartialViews\_TopNavbar.cshtml" />
+    <Content Include="Areas\Customer\Views\Shared\PartialViews\Sidebar\_Sidebar.cshtml" />
+    <Content Include="Areas\Customer\Views\Shared\PartialViews\TopNavbar\_TopNavbar.cshtml" />
     <Content Include="Areas\Customer\Views\Account\Login.cshtml" />
     <Content Include="Areas\Customer\Views\Account\ForgotPassword.cshtml" />
     <Content Include="Areas\Customer\Views\Home\Index.cshtml" />
@@ -2094,10 +2106,9 @@
     <Content Include="Areas\Seller\Views\web.config" />
     <Content Include="Areas\Seller\Views\Account\Login.cshtml" />
     <Content Include="Areas\Seller\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Seller\Views\Shared\PartialViews\_ErrorMsg.cshtml" />
     <Content Include="Areas\Seller\Views\Shared\PartialViews\_Footer.cshtml" />
-    <Content Include="Areas\Seller\Views\Shared\PartialViews\_Sidebar.cshtml" />
-    <Content Include="Areas\Seller\Views\Shared\PartialViews\_TopNavbar.cshtml" />
+    <Content Include="Areas\Seller\Views\Shared\PartialViews\Sidebar\_Sidebar.cshtml" />
+    <Content Include="Areas\Seller\Views\Shared\PartialViews\TopNavbar\_TopNavbar.cshtml" />
     <Content Include="Areas\Seller\Views\Account\ForgotPassword.cshtml" />
     <Content Include="Areas\Seller\Views\Account\Index.cshtml" />
     <Content Include="Areas\Seller\Views\Home\Index.cshtml" />
@@ -2108,12 +2119,64 @@
     <Content Include="Areas\Customer\Views\Account\Register.cshtml" />
     <Content Include="Areas\Customer\Views\Account\Index.cshtml" />
     <Content Include="Areas\Customer\Views\Account\Edit.cshtml" />
-    <Content Include="Areas\Customer\Views\Shared\PartialViews\_SuccessMsg.cshtml" />
-    <Content Include="Areas\Manegement\Views\Shared\PartialViews\_SuccessMsg.cshtml" />
-    <Content Include="Areas\Seller\Views\Shared\PartialViews\_SuccessMsg.cshtml" />
     <Content Include="Areas\Seller\Views\Account\Edit.cshtml" />
     <Content Include="Areas\Manegement\Views\Account\Edit.cshtml" />
     <Content Include="Views\Shared\PartialViews\_PageTop.cshtml" />
+    <Content Include="Areas\Manegement\Views\Category\Create.cshtml" />
+    <Content Include="Areas\Manegement\Views\Category\Delete.cshtml" />
+    <Content Include="Areas\Manegement\Views\Category\Edit.cshtml" />
+    <Content Include="Areas\Manegement\Views\Category\Index.cshtml" />
+    <Content Include="Areas\Manegement\Views\SubCategory\Create.cshtml" />
+    <Content Include="Areas\Manegement\Views\SubCategory\Delete.cshtml" />
+    <Content Include="Areas\Manegement\Views\SubCategory\Edit.cshtml" />
+    <Content Include="Areas\Manegement\Views\SubCategory\Index.cshtml" />
+    <Content Include="Areas\Seller\Views\Product\Create.cshtml" />
+    <Content Include="Areas\Seller\Views\Product\Delete.cshtml" />
+    <Content Include="Areas\Seller\Views\Product\Edit.cshtml" />
+    <Content Include="Areas\Seller\Views\Product\Index.cshtml" />
+    <Content Include="Areas\Customer\Views\Buy\Create.cshtml" />
+    <Content Include="Areas\Manegement\Views\Shared\PartialViews\Sidebar\_ManegementOthersMenusSidebar.cshtml" />
+    <Content Include="Areas\Seller\Views\Category\Index.cshtml" />
+    <Content Include="Areas\Customer\Views\Buy\Index.cshtml" />
+    <Content Include="Areas\Customer\Views\Product\Details.cshtml" />
+    <Content Include="Areas\Customer\Views\Product\Index.cshtml" />
+    <Content Include="Areas\Customer\Views\Order\Index.cshtml" />
+    <Content Include="Areas\Customer\Views\Order\OrderDetails.cshtml" />
+    <Content Include="Areas\Customer\Views\Seller\Find.cshtml" />
+    <Content Include="Areas\Customer\Views\Seller\Products.cshtml" />
+    <Content Include="Areas\Customer\Views\Buy\SepeteEkle.cshtml" />
+    <Content Include="Views\Shared\PartialViews\TopNavbar\_MyCart.cshtml" />
+    <Content Include="Areas\Customer\Views\Shared\PartialViews\Sidebar\_OthersMenusSidebar.cshtml" />
+    <Content Include="Areas\Customer\Views\Shared\PartialViews\TopNavbar\_MyMsg.cshtml" />
+    <Content Include="Areas\Customer\Views\Product\FindCategoryProducts.cshtml" />
+    <Content Include="Areas\Customer\Views\Product\FindSubCategoryProducts.cshtml" />
+    <Content Include="Areas\Customer\Views\Product\FindSellerProducts.cshtml" />
+    <Content Include="Areas\Customer\Views\Product\CustomerProducts.cshtml" />
+    <Content Include="Areas\Customer\Views\Seller\TableProducts.cshtml" />
+    <Content Include="Areas\Customer\Views\Shared\PartialViews\Sidebar\_ProductsSellersSidebar.cshtml" />
+    <Content Include="Areas\Customer\Views\Seller\Index.cshtml" />
+    <Content Include="Areas\Manegement\Views\Product\Create.cshtml" />
+    <Content Include="Areas\Manegement\Views\Product\Delete.cshtml" />
+    <Content Include="Areas\Manegement\Views\Product\Details.cshtml" />
+    <Content Include="Areas\Manegement\Views\Product\Edit.cshtml" />
+    <Content Include="Areas\Manegement\Views\Product\Index.cshtml" />
+    <Content Include="Areas\Manegement\Views\Category\Details.cshtml" />
+    <Content Include="Areas\Manegement\Views\SubCategory\Details.cshtml" />
+    <Content Include="Areas\Manegement\Views\Seller\Create.cshtml" />
+    <Content Include="Areas\Manegement\Views\Seller\Delete.cshtml" />
+    <Content Include="Areas\Manegement\Views\Seller\Details.cshtml" />
+    <Content Include="Areas\Manegement\Views\Seller\Edit.cshtml" />
+    <Content Include="Areas\Manegement\Views\Seller\Index.cshtml" />
+    <Content Include="Areas\Manegement\Views\Customer\Create.cshtml" />
+    <Content Include="Areas\Manegement\Views\Customer\Delete.cshtml" />
+    <Content Include="Areas\Manegement\Views\Customer\Details.cshtml" />
+    <Content Include="Areas\Manegement\Views\Customer\Edit.cshtml" />
+    <Content Include="Areas\Manegement\Views\Customer\Index.cshtml" />
+    <Content Include="Areas\Manegement\Views\Customer\ResetPassword.cshtml" />
+    <Content Include="Areas\Manegement\Views\Seller\ResetPassword.cshtml" />
+    <Content Include="Areas\Manegement\Views\Product\FindCategoryProducts.cshtml" />
+    <Content Include="Areas\Manegement\Views\Product\FindSubCategoryProducts.cshtml" />
+    <Content Include="Areas\Manegement\Views\Product\FindSellerProducts.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2134,27 +2197,45 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
-    <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\PartialViews\_Footer.cshtml" />
-    <Content Include="Views\Shared\PartialViews\_TopNavbar.cshtml" />
-    <Content Include="Views\Shared\PartialViews\_Sidebar.cshtml" />
-    <Content Include="Views\Shared\PartialViews\_LoginSidebar.cshtml" />
-    <Content Include="Views\Shared\PartialViews\_LogoutSidebar.cshtml" />
+    <Content Include="Views\Shared\PartialViews\TopNavbar\_TopNavbar.cshtml" />
+    <Content Include="Views\Shared\PartialViews\Sidebar\_Sidebar.cshtml" />
+    <Content Include="Views\Shared\PartialViews\Sidebar\_LoginSidebar.cshtml" />
+    <Content Include="Views\Shared\PartialViews\Sidebar\_LogoutSidebar.cshtml" />
     <Content Include="Views\Shared\PartialViews\_Contact.cshtml" />
     <Content Include="Views\Shared\PartialViews\_About.cshtml" />
-    <Content Include="Views\Shared\PartialViews\_ContactAboutSidebar.cshtml" />
+    <Content Include="Views\Shared\PartialViews\Sidebar\_ContactAboutSidebar.cshtml" />
+    <Content Include="Areas\Seller\Views\Shared\PartialViews\Sidebar\_SellerOthersMenusSidebar.cshtml" />
+    <Content Include="Views\Buy\SepeteEkle.cshtml" />
+    <Content Include="Views\Buy\Index.cshtml" />
+    <Content Include="Views\Shared\PartialViews\TopNavbar\_Alerts.cshtml" />
+    <Content Include="Views\Shared\PartialViews\Messages\_ErrorMsg.cshtml" />
+    <Content Include="Views\Shared\PartialViews\Messages\_SuccessMsg.cshtml" />
+    <Content Include="Views\Shared\PartialViews\TopNavbar\_SpecialDays.cshtml" />
+    <Content Include="Views\Product\Details.cshtml" />
+    <Content Include="Views\Product\FindCategoryProducts.cshtml" />
+    <Content Include="Views\Product\FindSubCategoryProducts.cshtml" />
+    <Content Include="Views\Product\FindSellerProducts.cshtml" />
+    <Content Include="Views\Sellers\Find.cshtml" />
+    <Content Include="Views\Sellers\Products.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Sellers\TableProducts.cshtml" />
+    <Content Include="Views\Shared\PartialViews\Sidebar\_ProductsSellersSidebar.cshtml" />
+    <Content Include="Views\Sellers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Customer\Data\" />
     <Folder Include="Areas\Manegement\Data\" />
     <Folder Include="Areas\Seller\Data\" />
+    <Folder Include="Content\img\SpecialDays\" />
     <Folder Include="Models\" />
+    <Folder Include="Uploads\Image\Categories\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

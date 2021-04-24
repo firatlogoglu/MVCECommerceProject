@@ -39,5 +39,15 @@ namespace MVCECommerceProject.SERVICE.Option
         {
             return Any(x => x.Email == _email && x.Password == _password && x.Role == _role);
         }
+
+        public bool CheckEmail(string _email)
+        {
+            return Any(x => x.Email == _email);
+        }
+
+        public bool CheckTCNO(string _tcno)
+        {
+            return Any(x => x.TCNO == _tcno);
+        }
     }
 }

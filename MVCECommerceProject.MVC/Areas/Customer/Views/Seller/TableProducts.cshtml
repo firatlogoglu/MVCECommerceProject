@@ -1,0 +1,114 @@
+﻿@model IEnumerable<MVCECommerceProject.MODEL.Entities.Product>
+@{
+    ViewBag.Title = "Tüm Ürünlerim (Tablo)";
+    Layout = "~/Areas/Customer/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">@ViewBag.Title</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ImagePath)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ProductName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UnitPrice)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UnitsInStock)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SubCategory.Category.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SubCategory.Name)
+                        </th>
+                        <th>
+                            Satıcı
+                        </th>
+                        <th>
+                            Sepete Ekle | Hemen Satın Al
+                        </th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ImagePath)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ProductName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UnitPrice)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UnitsInStock)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SubCategory.Category.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SubCategory.Name)
+                        </th>
+                        <th>
+                            Satıcı
+                        </th>
+                        <th>
+                            Sepete Ekle | Hemen Satın Al
+                        </th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <img class="img-sm-mycss"
+                                     src="@item.ImagePath">
+                            </td>
+                            <td>
+                                <a href="@Url.Action("Details", "Product", new { area = "Customer", id = item.ID })">
+                                    @item.ProductName
+                                </a>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UnitPrice)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UnitsInStock)
+                            </td>
+                            <td>
+                                <a href="@Url.Action("FindCategoryProducts", "Product", new { area = "Customer", id = item.SubCategory.CategoryID })">
+                                    @item.SubCategory.Category.Name
+                                </a>
+                            </td>
+                            <td>
+                                <a href="@Url.Action("FindSubCategoryProducts", "Product", new { area = "Customer", id = item.SubCategory.ID })">
+                                    @item.SubCategory.Name
+                                </a>
+                            </td>
+                            <td>
+                                <a href="@Url.Action("Find", "Seller", new { area = "Customer", id = item.SellerID })">
+                                    @item.Seller.Name @item.Seller.SurName
+                                </a>
+                            </td>
+                            <td>
+                                @Html.ActionLink("Sepete Ekle", "SepeteEkle", "Buy", new { area = "Customer", id = item.ID }, new { @class = "" }) |
+                                @Html.ActionLink("Hemen Satın Al", "FastBuy", "Buy", new { area = "Customer", id = item.ID }, new { @class = "" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

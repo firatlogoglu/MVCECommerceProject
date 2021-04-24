@@ -1,0 +1,209 @@
+﻿@model MVCECommerceProject.MODEL.Entities.AppUser
+@{
+    ViewBag.Title = Model.Name + " " + Model.SurName + " İsimli Satıcının Hesabını Sil";
+    Layout = "~/Areas/Manegement/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">@ViewBag.Title</h6>
+    </div>
+    <div class="card-body">
+        <h3>Bu satıcının hesabını silmek istediğinize emin misiniz?</h3>
+        <div>
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.ImagePath)
+                </dt>
+
+                <dd>
+                    <img src="@Model.ImagePath" class="img-sm-mycss" />
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.SurName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.SurName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.TCNO)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.TCNO)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Email)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Email)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.PhoneNumber)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.PhoneNumber)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Address)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Address)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.BirthDate)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.BirthDate)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.BirthPlace)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.BirthPlace)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.BloodType)
+                </dt>
+
+                @{ if (Model.BloodType == MVCECommerceProject.MODEL.Enums.Person.BloodType.AB_Negative)
+                    {
+                        <dd>AB Rh-</dd>
+                    }
+                    else if (Model.BloodType == MVCECommerceProject.MODEL.Enums.Person.BloodType.AB_Positive)
+                    {
+                        <dd>AB Rh+</dd>
+                    }
+                    else if (Model.BloodType == MVCECommerceProject.MODEL.Enums.Person.BloodType.A_Negative)
+                    {
+                        <dd>A Rh-</dd>
+                    }
+                    else if (Model.BloodType == MVCECommerceProject.MODEL.Enums.Person.BloodType.A_Positive)
+                    {
+                        <dd>A Rh+</dd>
+                    }
+                    else if (Model.BloodType == MVCECommerceProject.MODEL.Enums.Person.BloodType.B_Negative)
+                    {
+                        <dd>B Rh-</dd>
+                    }
+                    else if (Model.BloodType == MVCECommerceProject.MODEL.Enums.Person.BloodType.B_Positive)
+                    {
+                        <dd>B Rh+</dd>
+                    }
+                    else if (Model.BloodType == MVCECommerceProject.MODEL.Enums.Person.BloodType.O_Negative)
+                    {
+                        <dd>0 Rh-</dd>
+                    }
+                    else if (Model.BloodType == MVCECommerceProject.MODEL.Enums.Person.BloodType.O_Positive)
+                    {
+                        <dd>0 Rh+</dd>
+                    }
+                }
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Gender)
+                </dt>
+
+                @{ if (Model.Gender == MVCECommerceProject.MODEL.Enums.Person.Gender.Female)
+                    {
+                        <dd>Kadın</dd>
+                    }
+                    else if (Model.Gender == MVCECommerceProject.MODEL.Enums.Person.Gender.Male)
+                    {
+                        <dd>Erkek</dd>
+                    }
+                }
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.MaritalState)
+                </dt>
+
+                @{ if (Model.MaritalState == MVCECommerceProject.MODEL.Enums.Person.MaritalState.Married)
+                    {
+                        <dd>Evli</dd>
+                    }
+                    else if (Model.MaritalState == MVCECommerceProject.MODEL.Enums.Person.MaritalState.Single)
+                    {
+                        <dd>Bekar</dd>
+                    }
+                    else if (Model.MaritalState == MVCECommerceProject.MODEL.Enums.Person.MaritalState.Widowed)
+                    {
+                        <dd>Dul</dd>
+                    }
+                    else if (Model.MaritalState == MVCECommerceProject.MODEL.Enums.Person.MaritalState.Divorce)
+                    {
+                        <dd>Boşanmış</dd>
+                    }
+                }
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Role)
+                </dt>
+
+                @{ if (Model.Role == MVCECommerceProject.MODEL.Enums.Role.Customer)
+                    {
+                        <dd>Sadece Müşteri</dd>
+                    }
+                    else if (Model.Role == MVCECommerceProject.MODEL.Enums.Role.Seller_Customer)
+                    {
+                        <dd>Müşteri-Satıcı</dd>
+                    }
+                    else if (Model.Role == MVCECommerceProject.MODEL.Enums.Role.Admin)
+                    {
+                        <dd>Yönetici</dd>
+                    }
+                    else if (Model.Role == MVCECommerceProject.MODEL.Enums.Role.Banned)
+                    {
+                        <dd>Yasaklı</dd>
+                    }
+                    else if (Model.Role == MVCECommerceProject.MODEL.Enums.Role.Member)
+                    {
+                        <dd>Member</dd>
+                    }
+                }
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Status)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Status)
+                </dd>
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-actions no-color">
+                    <input type="submit" value="Sil" class="btn btn-lg btn-block btn-danger" />
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Satıcı Listesine Geri Dön", "Index")
+</div>

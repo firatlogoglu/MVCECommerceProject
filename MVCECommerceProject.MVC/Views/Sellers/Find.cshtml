@@ -1,0 +1,91 @@
+﻿@model MVCECommerceProject.MODEL.Entities.AppUser
+@{
+    ViewBag.Title = "Satıcı: " + @Model.Name + " " + @Model.SurName;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="card shadow mb-4">
+            <!-- Card Header - Accordion -->
+            <a href="#profile" class="d-block card-header py-3" data-toggle="collapse"
+               role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                <h6 class="m-0 font-weight-bold text-primary">@ViewBag.Title</h6>
+            </a>
+            <!-- Card Content - Collapse -->
+            <div class="collapse show" id="profile">
+                <div class="card-body">
+
+                    <div>
+                        <img class="img-lm-mycss" alt="@Model.Name" src="@Model.ImagePath" />
+                    </div>
+
+                    <br />
+
+                    <div>
+                        <label><strong>Satıcı:</strong> @Model.Name @Model.SurName</label>
+                    </div>
+
+                    <div>
+                        <label><strong>Kayıt Tarihi:</strong> @Model.CreatedDate.ToString("dd.MM.yyyy")</label>
+                    </div>
+                    <div>
+                        <label><strong>E-Posta Adresi:</strong> @Model.Email</label>
+                    </div>
+                    <div>
+                        <label><strong>Telefon Numaram:</strong> @Model.PhoneNumber</label>
+                    </div>
+
+                    <div>
+                        <label><strong>Adres:</strong> @Model.Address</label>
+                    </div>
+
+                    <br />
+                    <br />
+
+                    <div>
+                        @Html.ActionLink("Tüm Ürünlerim", "Products", "Sellers", new { id = Model.ID }, new { @class = "btn btn-lg btn-success" })
+                        @Html.ActionLink("Tüm Ürünlerim (Tablo)", "TableProducts", "Sellers", new { id = Model.ID }, new { @class = "btn btn-lg btn-success" })
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+
+        <div class="card shadow mb-4">
+            <!-- Card Header - Accordion -->
+            <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse"
+               role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                <h6 class="m-0 font-weight-bold text-primary">Collapsable Card Example</h6>
+            </a>
+            <!-- Card Content - Collapse -->
+            <div class="collapse show" id="collapseCardExample">
+                <div class="card-body">
+                    This is a collapsable card example using Bootstrap's built in collapse
+                    functionality. <strong>Click on the card header</strong> to see the card body
+                    collapse and expand!
+                </div>
+            </div>
+        </div>
+
+        <!-- Collapsable Card Example -->
+        <div class="card shadow mb-4">
+            <!-- Card Header - Accordion -->
+            <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse"
+               role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                <h6 class="m-0 font-weight-bold text-primary">Collapsable Card Example</h6>
+            </a>
+            <!-- Card Content - Collapse -->
+            <div class="collapse show" id="collapseCardExample">
+                <div class="card-body">
+                    This is a collapsable card example using Bootstrap's built in collapse
+                    functionality. <strong>Click on the card header</strong> to see the card body
+                    collapse and expand!
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

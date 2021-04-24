@@ -1,0 +1,321 @@
+﻿@model MVCECommerceProject.MODEL.Entities.AppUser
+@{
+    ViewBag.Title = Model.Name + " " + Model.SurName + " Detayı";
+    Layout = "~/Areas/Manegement/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">@ViewBag.Title</h6>
+        @Html.ActionLink("Yeni Müşteri Ekle", "Create", null, new { @class = "pull-right-mycss" })
+    </div>
+    <div class="card-body">
+        @Html.Partial("PartialViews/Messages/_ErrorMsg")
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ImagePath)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SurName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TCNO)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Email)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PhoneNumber)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Address)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.BirthDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.BirthPlace)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.BloodType)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.MaritalState)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Gender)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Role)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CreatedDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CreatedADUsername)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CreatedIP)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CreatedBy)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ModifiedDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ModifiedADUsername)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ModifiedIP)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ModifiedBy)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Status)
+                        </th>
+                        <th>Düzenle | Sil | Sifreyi Sıfırla</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ImagePath)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SurName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TCNO)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Email)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PhoneNumber)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Address)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.BirthDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.BirthPlace)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.BloodType)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.MaritalState)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Gender)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Role)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CreatedDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CreatedADUsername)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CreatedIP)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CreatedBy)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ModifiedDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ModifiedADUsername)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ModifiedIP)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ModifiedBy)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Status)
+                        </th>
+                        <th>Düzenle | Sil | Sifreyi Sıfırla</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+
+                    <tr>
+                        <td>
+                            <img class="img-sm-mycss"
+                                 src="@Model.ImagePath">
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Details", "Customer", new { area = "Manegement", id = Model.ID })">
+                                @Model.Name
+                            </a>
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Details", "Customer", new { area = "Manegement", id = Model.ID })">
+                                @Model.SurName
+                            </a>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model.TCNO)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model.PhoneNumber)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model.Address)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model.BirthDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model.BirthPlace)
+                        </td>
+                        @{ if (Model.BloodType == MVCECommerceProject.MODEL.Enums.Person.BloodType.AB_Negative)
+                            {
+                                <td>AB Rh-</td>
+                            }
+                            else if (Model.BloodType == MVCECommerceProject.MODEL.Enums.Person.BloodType.AB_Positive)
+                            {
+                                <td>AB Rh+</td>
+                            }
+                            else if (Model.BloodType == MVCECommerceProject.MODEL.Enums.Person.BloodType.A_Negative)
+                            {
+                                <td>A Rh-</td>
+                            }
+                            else if (Model.BloodType == MVCECommerceProject.MODEL.Enums.Person.BloodType.A_Positive)
+                            {
+                                <td>A Rh+</td>
+                            }
+                            else if (Model.BloodType == MVCECommerceProject.MODEL.Enums.Person.BloodType.B_Negative)
+                            {
+                                <td>B Rh-</td>
+                            }
+                            else if (Model.BloodType == MVCECommerceProject.MODEL.Enums.Person.BloodType.B_Positive)
+                            {
+                                <td>B Rh+</td>
+                            }
+                            else if (Model.BloodType == MVCECommerceProject.MODEL.Enums.Person.BloodType.O_Negative)
+                            {
+                                <td>0 Rh-</td>
+                            }
+                            else if (Model.BloodType == MVCECommerceProject.MODEL.Enums.Person.BloodType.O_Positive)
+                            {
+                                <td>0 Rh+</td>
+                            }
+                        }
+
+                        @{ if (Model.MaritalState == MVCECommerceProject.MODEL.Enums.Person.MaritalState.Married)
+                            {
+                                <td>Evli</td>
+                            }
+                            else if (Model.MaritalState == MVCECommerceProject.MODEL.Enums.Person.MaritalState.Single)
+                            {
+                                <td>Bekar</td>
+                            }
+                            else if (Model.MaritalState == MVCECommerceProject.MODEL.Enums.Person.MaritalState.Widowed)
+                            {
+                                <td>Dul</td>
+                            }
+                            else if (Model.MaritalState == MVCECommerceProject.MODEL.Enums.Person.MaritalState.Divorce)
+                            {
+                                <td>Boşanmış</td>
+                            }
+                        }
+
+                        @{ if (Model.Gender == MVCECommerceProject.MODEL.Enums.Person.Gender.Female)
+                            {
+                                <td>Kadın</td>
+                            }
+                            else if (Model.Gender == MVCECommerceProject.MODEL.Enums.Person.Gender.Male)
+                            {
+                                <td>Erkek</td>
+                            }
+                        }
+
+                        @{ if (Model.Role == MVCECommerceProject.MODEL.Enums.Role.Customer)
+                            {
+                                <td>Sadece Müşteri</td>
+                            }
+                            else if (Model.Role == MVCECommerceProject.MODEL.Enums.Role.Seller_Customer)
+                            {
+                                <td>Müşteri-Satıcı</td>
+                            }
+                            else if (Model.Role == MVCECommerceProject.MODEL.Enums.Role.Admin)
+                            {
+                                <td>Yönetici</td>
+                            }
+                            else if (Model.Role == MVCECommerceProject.MODEL.Enums.Role.Banned)
+                            {
+                                <td>Yasaklı</td>
+                            }
+                            else if (Model.Role == MVCECommerceProject.MODEL.Enums.Role.Member)
+                            {
+                                <td>Member</td>
+                            }
+                        }
+
+                        <td>
+                            @Html.DisplayFor(model => model.CreatedDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.CreatedADUsername)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.CreatedIP)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.CreatedBy)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.ModifiedDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.ModifiedADUsername)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.ModifiedIP)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.ModifiedBy)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model.Status)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Düzenle", "Edit", new { id = Model.ID }) |
+                            @Html.ActionLink("Sil", "Delete", new { id = Model.ID }) |
+                            @Html.ActionLink("Şifreyi Sıfırla", "ResetPassword", new { id = Model.ID })
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<p>
+    @Html.ActionLink("Müşteri Listesine Geri Dön", "Index") |
+    @Html.ActionLink("Düzenle", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Sil", "Delete", new { id = Model.ID }) |
+    @Html.ActionLink("Şifreyi Sıfırla", "ResetPassword", new { id = Model.ID })
+<p>

@@ -24,14 +24,17 @@ namespace MVCECommerceProject.MODEL.Entities
         [Required(ErrorMessage = "Lütfen bir şifre girin"), Display(Name = "Şifre")]
         public string Password { get; set; }
 
-        [Compare("Password", ErrorMessage = "Şifreler uyumlu değil!")]
+        [Compare("Password", ErrorMessage = "Şifreler uyumlu değil!"), Display(Name = "Şifreyi Tekrar Girin")]
         //[NotMapped]
         public string ConfirmPassword { get; set; }
 
         [Required(ErrorMessage = "Lütfen bir e-posta adresi giriniz."), EmailAddress(ErrorMessage = "Lütfen geçerli bir e-posta adresi giriniz."), Display(Name = "E-posta Adresi")]
         public string Email { get; set; }
 
+        [Display(Name = "Adres")]
         public string Address { get; set; }
+
+        [Display(Name = "Telefon No")]
         public string PhoneNumber { get; set; }
 
         [Required(ErrorMessage = "Lütfen bir görsel seçin"), Display(Name = "Görsel")]
@@ -39,10 +42,14 @@ namespace MVCECommerceProject.MODEL.Entities
 
         [Display(Name = "Doğum Yeri")]
         public string BirthPlace { get; set; }
+
+        [Display(Name = "Yetki")]
         public Role? Role { get; set; }
 
         [Display(Name = "Kan Grubu")]
         public BloodType? BloodType { get; set; }
+
+        [Display(Name = "Doğum Tarihi")]
         public DateTime? BirthDate { get; set; }
 
         [Display(Name = "Cinsiyet")]
@@ -52,6 +59,8 @@ namespace MVCECommerceProject.MODEL.Entities
         public MaritalState MaritalState { get; set; }
 
         //Mapping
-        public List<Order> Orders { get; set; }
+        public virtual List<Order> Customers { get; set; }
+        public virtual List<Order> Sellers { get; set; }
+        public virtual List<Product> Seller { get; set; }
     }
 }

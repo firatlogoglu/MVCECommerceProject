@@ -1,0 +1,292 @@
+﻿@model MVCECommerceProject.MODEL.Entities.AppUser
+@{
+    ViewBag.Title = Model.Name + " " + Model.SurName + "Düzenle";
+    Layout = "~/Areas/Manegement/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">@ViewBag.Title</h6>
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm("Edit", "Customer", FormMethod.Post, new { @class = "form-signin", enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.Partial("PartialViews/Messages/_ErrorMsg")
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SurName, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.SurName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.SurName, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TCNO, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.TCNO, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.TCNO, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.BirthDate, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.BirthDate, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.BirthDate, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.BirthPlace, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.BirthPlace, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.BirthPlace, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    <label for="BloodType">@Html.DisplayNameFor(model => model.BloodType)</label>
+                    <select class="form-control" id="BloodType" name="BloodType">
+                        @foreach (var item in Enum.GetValues(typeof(MVCECommerceProject.MODEL.Enums.Person.BloodType)))
+                        {
+                            if ((MVCECommerceProject.MODEL.Enums.Person.BloodType)item == Model.BloodType)
+                            {
+                                switch ((MVCECommerceProject.MODEL.Enums.Person.BloodType)item)
+                                {
+                                    case MVCECommerceProject.MODEL.Enums.Person.BloodType.A_Positive:
+                                        <option selected value="@item">A Rh+</option>
+                                        break;
+                                    case MVCECommerceProject.MODEL.Enums.Person.BloodType.A_Negative:
+                                        <option selected value="@item">A Rh-</option>
+                                        break;
+                                    case MVCECommerceProject.MODEL.Enums.Person.BloodType.B_Positive:
+                                        <option selected value="@item">B Rh+</option>
+                                        break;
+                                    case MVCECommerceProject.MODEL.Enums.Person.BloodType.B_Negative:
+                                        <option selected value="@item">B Rh-</option>
+                                        break;
+                                    case MVCECommerceProject.MODEL.Enums.Person.BloodType.AB_Positive:
+                                        <option selected value="@item">AB Rh+</option>
+                                        break;
+                                    case MVCECommerceProject.MODEL.Enums.Person.BloodType.AB_Negative:
+                                        <option selected value="@item">AB Rh-</option>
+                                        break;
+                                    case MVCECommerceProject.MODEL.Enums.Person.BloodType.O_Positive:
+                                        <option selected value="@item">0 R+</option>
+                                        break;
+                                    case MVCECommerceProject.MODEL.Enums.Person.BloodType.O_Negative:
+                                        <option selected value="@item">0 Rh-</option>
+                                        break;
+                                }
+                            }
+                            else
+                            {
+                                switch ((MVCECommerceProject.MODEL.Enums.Person.BloodType)item)
+                                {
+                                    case MVCECommerceProject.MODEL.Enums.Person.BloodType.A_Positive:
+                                        <option value="@item">A Rh+</option>
+                                        break;
+                                    case MVCECommerceProject.MODEL.Enums.Person.BloodType.A_Negative:
+                                        <option value="@item">A Rh-</option>
+                                        break;
+                                    case MVCECommerceProject.MODEL.Enums.Person.BloodType.B_Positive:
+                                        <option value="@item">B Rh+</option>
+                                        break;
+                                    case MVCECommerceProject.MODEL.Enums.Person.BloodType.B_Negative:
+                                        <option value="@item">B Rh-</option>
+                                        break;
+                                    case MVCECommerceProject.MODEL.Enums.Person.BloodType.AB_Positive:
+                                        <option value="@item">AB Rh+</option>
+                                        break;
+                                    case MVCECommerceProject.MODEL.Enums.Person.BloodType.AB_Negative:
+                                        <option value="@item">AB Rh-</option>
+                                        break;
+                                    case MVCECommerceProject.MODEL.Enums.Person.BloodType.O_Positive:
+                                        <option value="@item">0 R+</option>
+                                        break;
+                                    case MVCECommerceProject.MODEL.Enums.Person.BloodType.O_Negative:
+                                        <option value="@item">0 Rh-</option>
+                                        break;
+                                }
+                            }
+                        }
+                    </select>
+                    @Html.ValidationMessageFor(model => model.BloodType, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    <label for="Gender">@Html.DisplayNameFor(model => model.Gender)</label>
+                    <select class="form-control" id="Gender" name="Gender">
+                        @foreach (var item in Enum.GetValues(typeof(MVCECommerceProject.MODEL.Enums.Person.Gender)))
+                        {
+                            if ((MVCECommerceProject.MODEL.Enums.Person.Gender)item == Model.Gender)
+                            {
+                                switch ((MVCECommerceProject.MODEL.Enums.Person.Gender)item)
+                                {
+                                    case MVCECommerceProject.MODEL.Enums.Person.Gender.Female:
+                                        <option selected value="@item">Kadın</option>
+                                        break;
+                                    case MVCECommerceProject.MODEL.Enums.Person.Gender.Male:
+                                        <option selected value="@item">Erkek</option>
+                                        break;
+                                }
+                            }
+                            else
+                            {
+                                switch ((MVCECommerceProject.MODEL.Enums.Person.Gender)item)
+                                {
+                                    case MVCECommerceProject.MODEL.Enums.Person.Gender.Female:
+                                        <option value="@item">Kadın</option>
+                                        break;
+                                    case MVCECommerceProject.MODEL.Enums.Person.Gender.Male:
+                                        <option value="@item">Erkek</option>
+                                        break;
+                                }
+                            }
+                        }
+                    </select>
+                    @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    <label for="MaritalState">@Html.DisplayNameFor(model => model.MaritalState)</label>
+                    <select class="form-control" id="MaritalState" name="MaritalState">
+                        @foreach (var item in Enum.GetValues(typeof(MVCECommerceProject.MODEL.Enums.Person.MaritalState)))
+                        {
+                            if ((MVCECommerceProject.MODEL.Enums.Person.MaritalState)item == Model.MaritalState)
+                            {
+                                switch ((MVCECommerceProject.MODEL.Enums.Person.MaritalState)item)
+                                {
+                                    case MVCECommerceProject.MODEL.Enums.Person.MaritalState.Married:
+                                        <option selected value="@item">Evli</option>
+                                        break;
+                                    case MVCECommerceProject.MODEL.Enums.Person.MaritalState.Single:
+                                        <option selected value="@item">Bekar</option>
+                                        break;
+                                    case MVCECommerceProject.MODEL.Enums.Person.MaritalState.Widowed:
+                                        <option selected value="@item">Dul</option>
+                                        break;
+                                    case MVCECommerceProject.MODEL.Enums.Person.MaritalState.Divorce:
+                                        <option selected value="@item">Boşanmış</option>
+                                        break;
+                                }
+                            }
+                            else
+                            {
+                                switch ((MVCECommerceProject.MODEL.Enums.Person.MaritalState)item)
+                                {
+                                    case MVCECommerceProject.MODEL.Enums.Person.MaritalState.Married:
+                                        <option value="@item">Evli</option>
+                                        break;
+                                    case MVCECommerceProject.MODEL.Enums.Person.MaritalState.Single:
+                                        <option value="@item">Bekar</option>
+                                        break;
+                                    case MVCECommerceProject.MODEL.Enums.Person.MaritalState.Widowed:
+                                        <option value="@item">Dul</option>
+                                        break;
+                                    case MVCECommerceProject.MODEL.Enums.Person.MaritalState.Divorce:
+                                        <option value="@item">Boşanmış</option>
+                                        break;
+                                }
+                            }
+                        }
+                    </select>
+                    @Html.ValidationMessageFor(model => model.MaritalState, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    <label for="Role">@Html.DisplayNameFor(model => model.Role)</label>
+                    <select class="form-control" id="Role" name="Role">
+                        @foreach (var item in Enum.GetValues(typeof(MVCECommerceProject.MODEL.Enums.Role)))
+                        {
+                            if ((MVCECommerceProject.MODEL.Enums.Role)item == Model.Role)
+                            {
+                                switch ((MVCECommerceProject.MODEL.Enums.Role)item)
+                                {
+                                    case MVCECommerceProject.MODEL.Enums.Role.Customer:
+                                        <option selected value="@item">Sadece Müşteri</option>
+                                        break;
+                                    case MVCECommerceProject.MODEL.Enums.Role.Seller_Customer:
+                                        <option selected value="@item">Müşteri-Satıcı</option>
+                                        break;
+                                    case MVCECommerceProject.MODEL.Enums.Role.Admin:
+                                        <option selected value="@item">Yönetici</option>
+                                        break;
+                                    case MVCECommerceProject.MODEL.Enums.Role.Member:
+                                        <option selected value="@item">Member</option>
+                                        break;
+                                }
+                            }
+                            else
+                            {
+                                switch ((MVCECommerceProject.MODEL.Enums.Role)item)
+                                {
+                                    case MVCECommerceProject.MODEL.Enums.Role.Customer:
+                                        <option value="@item">Sadece Müşteri</option>
+                                        break;
+                                    case MVCECommerceProject.MODEL.Enums.Role.Seller_Customer:
+                                        <option value="@item">Müşteri-Satıcı</option>
+                                        break;
+                                    case MVCECommerceProject.MODEL.Enums.Role.Admin:
+                                        <option value="@item">Yönetici</option>
+                                        break;
+                                    case MVCECommerceProject.MODEL.Enums.Role.Member:
+                                        <option value="@item">Member</option>
+                                        break;
+                                }
+                            }
+                        }
+                    </select>
+                    @Html.ValidationMessageFor(model => model.Role, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ImagePath, htmlAttributes: new { @class = "control-label" })
+                    <div>
+                        <img src="@Model.ImagePath" class="img-sm-mycss" />
+                        <br />
+                    </div>
+                    <input type="file" class="form-control" name="ImagePath" />
+                    @*@Html.ValidationMessageFor(model => model.ImagePath, "", new { @class = "text-danger" })*@
+                </div>
+
+                @Html.HiddenFor(model => model.Password)
+                @Html.HiddenFor(model => model.ConfirmPassword)
+                @Html.HiddenFor(model => model.CreatedDate)
+                @Html.HiddenFor(model => model.CreatedComputerName)
+                @Html.HiddenFor(model => model.CreatedIP)
+                @Html.HiddenFor(model => model.CreatedADUsername)
+                @Html.HiddenFor(model => model.CreatedBy)
+
+                <div class="form-group">
+                    <div class="col-md-offset-2">
+                        <input type="submit" value="Kaydet" class="btn btn-lg btn-block btn-success" />
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Müşteri Listesine Geri Dön", "Index")
+</div>

@@ -1,7 +1,54 @@
-﻿@{
+﻿@model IEnumerable<MVCECommerceProject.MODEL.Entities.Product>
+@{
     ViewBag.Title = "Ana Sayfa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">@ViewBag.Title</h1>
+@*<h1 class="h3 mb-0 text-gray-800">@ViewBag.Title</h1>*@
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">@ViewBag.Title Hoşgeldiniz</h6>
+    </div>
+    <div class="card-body">
+        @Html.Partial("PartialViews/Messages/_ErrorMsg")
+        <div class="d-sm-flex align-items-center m-lg-auto">
+            @foreach (var item in Model)
+            {
+                <div class="card shadow mb-2">
+                    <!-- Card Header - Accordion -->
+                    <a href="#collapseCardExample-@item.ProductName" class="d-block card-header py-3" data-toggle="collapse"
+                       role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                        <h6 class="m-0 font-weight-bold text-primary">@item.ProductName</h6>
+                    </a>
+                    <!-- Card Content - Collapse -->
+                    <div class="collapse show" id="collapseCardExample-@item.ProductName">
+                        <div class="card-body">
+                            <img class="img-lm-mycss"
+                                 src="@item.ImagePath">
+
+                            <br />
+                            <p>
+                                @Html.ActionLink("Kategori: " + item.SubCategory.Category.Name, "FindCategoryProducts", "Product", new { area = "", id = item.SubCategory.CategoryID }, new { @class = "" })
+                            </p>
+                            <p>
+                                @Html.ActionLink("Alt Kategori: " + item.SubCategory.Name, "FindSubCategoryProducts", "Product", new { area = "", id = item.SubCategory.ID }, new { @class = "" })
+                            </p>
+                            <p>
+                                @Html.ActionLink("Satıcı: " + item.Seller.Name + " " + item.Seller.SurName, "FindSellerProducts", "Product", new { area = "", id = item.SellerID }, new { @class = "" })
+                            </p>
+
+                            @Html.ActionLink("Sepete Ekle", "SepeteEkle", "Buy", new { id = item.ID }, new { @class = "btn btn-lg btn-block btn-success" })
+
+                            @*//TODO: Hemen Satın Al *@
+                            @Html.ActionLink("Hemen Satın Al", "FastBuy", "Buy", new { area = "Customer", id = item.ID }, new { @class = "btn btn-lg btn-block btn-success" })
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <br />
+                </div>
+            }
+        </div>
+    </div>
 </div>

@@ -1,0 +1,32 @@
+﻿@if (TempData["User"] == null)
+{
+    <li class="nav-item">
+        <a class="nav-link" href="@Url.Action("About","Home", new { area = "" })">
+            <i class="fas fa-fw fa-address-card"></i>
+            <span>Hakkında</span>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="@Url.Action("Contact","Home", new { area = "" })">
+            <i class="fas fa-fw fa-phone"></i>
+            <span>İletişim</span>
+        </a>
+    </li>
+}
+else
+{
+    <li class="nav-item">
+        <a class="nav-link" href="@Url.Action("About","Home")">
+            <i class="fas fa-fw fa-address-card"></i>
+            <span>Hakkında</span>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="@Url.Action("Contact","Home")">
+            <i class="fas fa-fw fa-phone"></i>
+            <span>İletişim</span>
+        </a>
+    </li>
+}

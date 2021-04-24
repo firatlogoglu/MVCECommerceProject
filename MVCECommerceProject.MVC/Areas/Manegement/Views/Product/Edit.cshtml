@@ -1,0 +1,73 @@
+﻿@model MVCECommerceProject.MODEL.Entities.Product
+
+@{
+    ViewBag.Title = "Düzenle";
+    Layout = "~/Areas/Manegement/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">@Model.ProductName - @ViewBag.Title</h6>
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm("Edit", "Product", FormMethod.Post, new { @class = "form-signin", enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.ID)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ProductName, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.ProductName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ProductName, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.UnitPrice, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.UnitPrice, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.UnitPrice, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.UnitsInStock, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.UnitsInStock, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.UnitsInStock, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.ImagePath, htmlAttributes: new { @class = "control-label" })
+                <div>
+                    <img src="@Model.ImagePath" class="img-sm-mycss" />
+                    <br />
+                </div>
+                <input type="file" class="form-control" name="ImagePath" />
+                @Html.ValidationMessageFor(model => model.ImagePath, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.SubCategory.Name, htmlAttributes: new { @class = "control-label" })
+                @Html.DropDownList("SubCategoryID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.SubCategoryID, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.Label("Satıcının E-posta Adresi", htmlAttributes: new { @class = "control-label" })
+                @Html.DropDownList("SellerID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.SellerID, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.HiddenFor(model => model.CreatedDate)
+            @Html.HiddenFor(model => model.CreatedComputerName)
+            @Html.HiddenFor(model => model.CreatedIP)
+            @Html.HiddenFor(model => model.CreatedADUsername)
+            @Html.HiddenFor(model => model.CreatedBy)
+
+            <div class="form-group">
+                <div class="col-md-offset-2">
+                    <input type="submit" value="Kaydet" class="btn btn-lg btn-block btn-success" />
+                </div>
+            </div>
+
+        }
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Tüm Ürünlere Geri Dön", "Index")
+</div>

@@ -10,15 +10,7 @@ namespace MVCECommerceProject.MVC.Areas.Customer.Controllers
 {
     public class AccountController : Controller
     {
-        AppUserService db;
-
-        public AccountController()
-        {
-            if (db == null)
-            {
-                db = new AppUserService();
-            }
-        }
+        private AppUserService db = new AppUserService();
 
         public ActionResult Login()
         {
@@ -26,6 +18,7 @@ namespace MVCECommerceProject.MVC.Areas.Customer.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Login(AppUser model)
         {
             try
@@ -66,6 +59,7 @@ namespace MVCECommerceProject.MVC.Areas.Customer.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Register(AppUser user, HttpPostedFileBase ImagePath)
         {
             try
@@ -73,7 +67,18 @@ namespace MVCECommerceProject.MVC.Areas.Customer.Controllers
                 user.ID = Guid.NewGuid();
                 user.Role = MODEL.Enums.Role.Customer;
                 user.ImagePath = ImageUploader.UploadSingleImage("~/Uploads/Image/Users/", ImagePath);
+                if (db.CheckEmail(user.Email))
+                {
+                    TempData["Error"] = user.Email + " e-posta adresi, kayıtlarımızda mevcut.";
+                    return View(user);
+                }
+                if (db.CheckTCNO(user.TCNO))
+                {
+                    TempData["Error"] = user.TCNO + " TCKNO, kayıtlarımızda mevcut.";
+                    return View(user);
+                }
                 db.Add(user);
+
                 TempData["Success"] = "Kayıt işlemi başarılı.";
                 return RedirectToAction("Login");
             }
@@ -90,6 +95,7 @@ namespace MVCECommerceProject.MVC.Areas.Customer.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult ForgotPassword(string mail)
         {
             if (mail == string.Empty)
@@ -133,24 +139,17 @@ namespace MVCECommerceProject.MVC.Areas.Customer.Controllers
         [CustomerAuthFilter]
         public ActionResult Edit(Guid id)
         {
-            Guid guidid = Guid.Empty;
+            TempData.Keep();
             if (TempData["User"] == null || TempData["UserImg"] == null)
             {
                 var userDetail = Session["CLogin"] as AppUser;
                 TempData["User"] = userDetail.Name + " " + userDetail.SurName;
                 TempData["UserImg"] = userDetail.ImagePath;
-                guidid = userDetail.ID;
-                TempData.Keep();
-            }
-            else
-            {
-                var userDetail = Session["CLogin"] as AppUser;
-                id = userDetail.ID;
             }
 
             if (id != null)
             {
-               AppUser appUser = db.GetById(id);
+                AppUser appUser = db.GetById(id);
                 return View(appUser);
             }
             else
@@ -162,8 +161,39 @@ namespace MVCECommerceProject.MVC.Areas.Customer.Controllers
 
         [CustomerAuthFilter]
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(HttpPostedFileBase ImagePath, AppUser appUser)
         {
+            TempData.Keep();
+            var userDetail = Session["CLogin"] as AppUser;
+            if (TempData["User"] == null || TempData["UserImg"] == null)
+            {
+                TempData["User"] = userDetail.Name + " " + userDetail.SurName;
+                TempData["UserImg"] = userDetail.ImagePath;
+            }
+
+            appUser.ModifiedBy = userDetail.Email;
+
+            if (appUser.Email != db.GetById(appUser.ID).Email)
+            {
+                if (db.CheckEmail(appUser.Email))
+                {
+                    TempData["Error"] = appUser.Email + " e-posta adresi, kayıtlarımızda mevcut.";
+                    appUser.ImagePath = db.GetById(appUser.ID).ImagePath;
+                    return View(appUser);
+                }
+            }
+
+            if (appUser.TCNO != db.GetById(appUser.ID).TCNO)
+            {
+                if (db.CheckTCNO(appUser.TCNO))
+                {
+                    TempData["Error"] = appUser.TCNO + " TCKNO, kayıtlarımızda mevcut.";
+                    appUser.ImagePath = db.GetById(appUser.ID).ImagePath;
+                    return View(appUser);
+                }
+            }
+
             if (ImagePath != null)
             {
                 appUser.ImagePath = ImageUploader.UploadSingleImage("~/Uploads/Image/Users/", ImagePath);
@@ -172,7 +202,6 @@ namespace MVCECommerceProject.MVC.Areas.Customer.Controllers
             }
             else
             {
-                var userDetail = Session["CLogin"] as AppUser;
                 appUser.ImagePath = userDetail.ImagePath;
 
                 db.Update(appUser);
@@ -185,6 +214,7 @@ namespace MVCECommerceProject.MVC.Areas.Customer.Controllers
         public ActionResult Logout()
         {
             Session.Remove("CLogin");
+            Session.Remove("scart");
             TempData.Clear();
             return RedirectToAction("Login");
         }
@@ -192,11 +222,17 @@ namespace MVCECommerceProject.MVC.Areas.Customer.Controllers
         [CustomerAuthFilter]
         public ActionResult LogChange()
         {
-            Session["SLogin"] = Session["CLogin"] as AppUser;
-            Session.Remove("CLogin");
-            TempData.Clear();
+            var userDetail = Session["CLogin"] as AppUser;
+            if (userDetail.Role == MODEL.Enums.Role.Seller_Customer)
+            {
+                Session["SLogin"] = Session["CLogin"] as AppUser;
+                Session.Remove("CLogin");
+                TempData.Clear();
 
-            return RedirectToAction("Index", "Home", new { area = "Seller" });
+                return RedirectToAction("Index", "Home", new { area = "Seller" });
+            }
+            TempData["Error"] = "Satıcı olarak yetkiniz yok";
+            return RedirectToAction("Index", "Home");
         }
     }
 }

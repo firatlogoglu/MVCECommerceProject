@@ -1,5 +1,6 @@
 ﻿using MVCECommerceProject.MODEL.Entities;
 using MVCECommerceProject.MVC.Filters.AuthorizationFilters;
+using MVCECommerceProject.SERVICE.Option;
 using System.Web.Mvc;
 
 namespace MVCECommerceProject.MVC.Areas.Customer.Controllers
@@ -9,25 +10,26 @@ namespace MVCECommerceProject.MVC.Areas.Customer.Controllers
     {
         public ActionResult Index()
         {
+            TempData.Keep();
             if (TempData["User"] == null || TempData["UserImg"] == null)
             {
                 var userDetail = Session["CLogin"] as AppUser;
                 TempData["User"] = userDetail.Name + " " + userDetail.SurName;
                 TempData["UserImg"] = userDetail.ImagePath;
-                TempData.Keep();
             }
 
-            return View();
+            ProductService db = new ProductService();
+            return View(db.GetActive());
         }
 
         public ActionResult About()
         {
+            TempData.Keep();
             if (TempData["User"] == null || TempData["UserImg"] == null)
             {
                 var userDetail = Session["CLogin"] as AppUser;
                 TempData["User"] = userDetail.Name + " " + userDetail.SurName;
                 TempData["UserImg"] = userDetail.ImagePath;
-                TempData.Keep();
             }
 
             return View();
@@ -35,12 +37,12 @@ namespace MVCECommerceProject.MVC.Areas.Customer.Controllers
 
         public ActionResult Contact()
         {
+            TempData.Keep();
             if (TempData["User"] == null || TempData["UserImg"] == null)
             {
                 var userDetail = Session["CLogin"] as AppUser;
                 TempData["User"] = userDetail.Name + " " + userDetail.SurName;
                 TempData["UserImg"] = userDetail.ImagePath;
-                TempData.Keep();
             }
 
             return View();

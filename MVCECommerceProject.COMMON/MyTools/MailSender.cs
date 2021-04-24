@@ -18,6 +18,10 @@ namespace MVCECommerceProject.COMMON.MyTools
             //TODO: SMTP Port'u Varsayılan olarak 587 olarak verilmiştir, kullandığınız e-posta servisini kendi portunu yazınız.
             //TODO: SMTP Host'u Adresi varsayılan olarak "smtp.office365.com" olarak verilmiştir, kullandığınız e-posta servisini kendi smtp host adresini yazınız.
             //TODO: EnableSsl = true varsayılan olarak verilmiştir.
+
+            //TODO: SampleData içerisindeki veriler kullanıcaksa, sahte (fake) e-posta adreslerine, e-posta gönderecektir. Bu e-posta adresleri kullanılan ve başkasına ait olabilir. Bunu engellemek için, aşadaki yorum satırını, yorumu satırından çıkarılıp, içerisine alcı e-posta adresi olarak kendi e-posta adresinizi ekleyebilirsiniz.
+            //email = "";
+
             try
             {
                 MailMessage mailMessage = new MailMessage();

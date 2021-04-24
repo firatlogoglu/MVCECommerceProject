@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using MVCECommerceProject.SERVICE.Option;
+using System.Web.Mvc;
 
 namespace MVCECommerceProject.MVC.Controllers
 {
@@ -6,7 +7,8 @@ namespace MVCECommerceProject.MVC.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            ProductService db = new ProductService();
+            return View(db.GetActive());
         }
 
         public ActionResult About()

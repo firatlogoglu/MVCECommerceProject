@@ -1,0 +1,91 @@
+﻿@model IEnumerable<MVCECommerceProject.MODEL.CartModel.CartItem>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Customer/Views/Shared/_Layout.cshtml";
+
+    decimal? total = 0;
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">@TempData["User"]</h6>
+        @Html.ActionLink("Satın Al", "Buy", null, new { @class = "pull-right-mycss" })
+    </div>
+    <div class="card-body">
+        @Html.Partial("PartialViews/Messages/_ErrorMsg")
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ImagePath)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Quantity)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Price)
+                        </th>
+                        <th>
+                            Ara Toplam
+                        </th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ImagePath)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Quantity)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Price)
+                        </th>
+                        <th>
+                            Ara Toplam
+                        </th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        total += item.SubTotal;
+                        <tr>
+                            <td>
+                                <img class="img-sm-mycss"
+                                     src="@item.ImagePath">
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Quantity)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Price)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SubTotal)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <br />
+            <div>
+                @Html.ActionLink("Satın Al", "Buy", null, new { @class = "pull-left-mycss" })
+                <p class="pull-right-mycss" style="font:bold">
+                    TOPLAM: @total TL
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>

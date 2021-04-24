@@ -1,0 +1,58 @@
+﻿@model MVCECommerceProject.MODEL.Entities.Order
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Customer/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">@TempData["User"] - @ViewBag.Title</h6>
+    </div>
+    <div class="card-body">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Customer.TCNO)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Customer.TCNO)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Seller.TCNO)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Seller.TCNO)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Confirmed)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Confirmed)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Status)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Status)
+            </dd>
+
+            @foreach (var item in Model.OrderDetails)
+            {
+                <dt>@item.Product.ProductName</dt>
+
+            }
+
+        </dl>
+    </div>
+</div>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,117 @@
+﻿@model IEnumerable<MVCECommerceProject.MODEL.Entities.Product>
+@{
+    ViewBag.Title = "Alt Kategorilere Göre Ürünler";
+    Layout = "~/Areas/Manegement/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">@ViewBag.Title</h6>
+        @Html.ActionLink("Tüm Ürünler", "Index", "Product", null, new { @class = "pull-right-mycss" })
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ImagePath)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ProductName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UnitPrice)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UnitsInStock)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SubCategory.Category.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SubCategory.Name)
+                        </th>
+                        <th>
+                            Satıcı
+                        </th>
+                        <th>Detay | Düzenle | Sil</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ImagePath)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ProductName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UnitPrice)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UnitsInStock)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SubCategory.Category.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SubCategory.Name)
+                        </th>
+                        <th>
+                            Satıcı
+                        </th>
+                        <th>Detay | Düzenle | Sil</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <img class="img-sm-mycss"
+                                     src="@item.ImagePath">
+                            </td>
+                            <td>
+                                <a href="@Url.Action("Details", "Product", new { area = "Manegement", id = item.ID })">
+                                    @item.ProductName
+                                </a>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UnitPrice)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UnitsInStock)
+                            </td>
+                            <td>
+                                <a href="@Url.Action("Details", "Category", new { area = "Manegement", id = item.SubCategory.CategoryID })">
+                                    @item.SubCategory.Category.Name
+                                </a>
+                            </td>
+                            <td>
+                                <a href="@Url.Action("Details", "SubCategory", new { area = "Manegement", id = item.SubCategory.ID })">
+                                    @item.SubCategory.Name
+                                </a>
+                            </td>
+                            <td>
+                                <a href="@Url.Action("Details", "Seller", new { area = "Manegement", id = item.SellerID })">
+                                    @item.Seller.Name @item.Seller.SurName
+                                </a>
+                            </td>
+                            <td>
+                                @Html.ActionLink("Detay", "Details", new { id = item.ID }) |
+                                @Html.ActionLink("Düzenle", "Edit", new { id = item.ID }) |
+                                @Html.ActionLink("Sil", "Delete", new { id = item.ID })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<p>
+    @Html.ActionLink("Ürün Listesine Geri Dön", "Index") |
+    <a href="@Url.Action("Index", "SubCategory", new { area = "Manegement"})">Alt Kategori Listesine Geri Dön</a>
+<p>

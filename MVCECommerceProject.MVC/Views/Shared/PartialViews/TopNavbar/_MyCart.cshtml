@@ -1,0 +1,67 @@
+﻿@{ if (Session["scart"] != null)
+    {
+        var cart = Session["scart"] as MVCECommerceProject.MODEL.CartModel.Cart;
+
+        <li class="nav-item dropdown no-arrow mx-1">
+            <a class="nav-link dropdown-toggle" href="#" id="cartsDropdown" role="button"
+               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-shopping-cart"></i>
+                <!-- Counter - Messages -->
+                <span class="badge badge-danger badge-counter">@cart.MyCart.Count</span>
+            </a>
+
+            <!-- Dropdown - Messages -->
+            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                 aria-labelledby="cartsDropdown">
+                <h6 class="dropdown-header">
+                    <i class="fa fa-shopping-cart"></i>
+                    Sepetim
+                </h6>
+                @foreach (var item in cart.MyCart)
+                {
+                    <a class="dropdown-item d-flex align-items-center" href="@Url.Action("Details", "Product", new { area = "Customer", id = item.ID })">
+                        <div class="dropdown-list-image mr-3">
+                            <img class="rounded-circle" src="@item.ImagePath"
+                                 alt="@item.Name">
+                        </div>
+                        <div class="font-weight">
+                            <div class="text-truncate">
+                                <div>Ürün Adı: @item.Name</div>
+                                <div>Adet: @item.Quantity</div>
+                                <div>Fiyat: @item.SubTotal</div>
+                                <div>Satıcı: @item.SellerName</div>
+                            </div>
+                        </div>
+                    </a>
+                }
+                <a class="dropdown-item text-center small text-gray-500" href="@Url.Action("Index", "Buy", new { area = "Customer" })">Sepetim</a>
+            </div>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item dropdown no-arrow mx-1">
+            <a class="nav-link dropdown-toggle" href="#" id="cartsDropdown" role="button"
+               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-shopping-cart"></i>
+                <!-- Counter - Messages -->
+                <span class="badge badge-danger badge-counter"></span>
+            </a>
+
+            <!-- Dropdown - Messages -->
+            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                 aria-labelledby="cartsDropdown">
+                <h6 class="dropdown-header">
+                    <i class="fa fa-shopping-cart"></i>
+                    Sepetim
+                </h6>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                    <div class="font-weight">
+                        Sepette herhangi bir ürün yok.
+                    </div>
+                </a>
+            </div>
+        </li>
+    }
+}
+<div class="topbar-divider d-none d-sm-block"></div>

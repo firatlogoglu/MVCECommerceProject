@@ -55,7 +55,6 @@
                         <th>
                             @Html.DisplayNameFor(model => model.Status)
                         </th>
-                        <th>
                         <th>Düzenle | Sil | Ürünler</th>
                     </tr>
                 </tfoot>
@@ -92,10 +91,10 @@
                             <td>@item.Status</td>
                             <td>
                                 @Html.ActionLink("Düzenle", "Edit", new { id = item.ID }) |
-                                @Html.ActionLink("Sil", "Delete", new { id = item.ID })
+                                @Html.ActionLink("Sil", "Delete", new { id = item.ID }) |
                                 <a href="@Url.Action("FindSubCategoryProducts", "Product", new { area = "Manegement", id = item.ID })">
-                                    @item.Name Ürünleri
-                                </a> |
+                                    Ürünleri
+                                </a>
                             </td>
                         </tr>
                     }

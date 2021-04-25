@@ -2,6 +2,10 @@
     float: right !important;
 }
 
+.pull-left-mycss {
+    float: left !important;
+}
+
 .img-sm-mycss {
     width: 45px;
     height: 45px;

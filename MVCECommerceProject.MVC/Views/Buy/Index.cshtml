@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<MVCECommerceProject.MODEL.CartModel.CartItem>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Sepetim";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
     decimal? total = 0;
@@ -8,8 +8,8 @@
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">@TempData["User"]</h6>
-        @Html.ActionLink("Satın Al", "Create", "Buy", new { area = "Customer" }, new { @class = "pull-left-mycss" })
+        <h6 class="m-0 font-weight-bold text-primary">@ViewBag.Title</h6>
+        @Html.ActionLink("Satın Al", "Index", "Buy", new { area = "Customer" }, new { @class = "pull-right-mycss" })
     </div>
     <div class="card-body">
         @Html.Partial("PartialViews/Messages/_ErrorMsg")
@@ -80,7 +80,7 @@
             </table>
             <br />
             <div>
-                @Html.ActionLink("Satın Al", "Create", "Buy", new { area = "Customer" }, new { @class = "pull-left-mycss" })
+                @Html.ActionLink("Satın Al", "Index", "Buy", new { area = "Customer" }, new { @class = "pull-left-mycss" })
                 <p class="pull-right-mycss" style="font:bold">
                     TOPLAM: @total TL
                 </p>

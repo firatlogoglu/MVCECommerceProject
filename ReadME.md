@@ -161,6 +161,8 @@
 ## Projedeki Eksik Yerler
 * 1.) Kargo bilgisi eklenmediği için, satış işlemleri tamamlanmıştır.
 
-* 2.) Giriş yapılmadan, "Hemen Satın Al" işleminde ürün bilgisi Customer Area'yasına taşınmalı.
+* 2.) Sipariş Detay sayfası düzenlenecek.
 
-* 3.) SpecialDays (Özel Günler) için, resim veya fotoğraf bulunacak.
+* 3.) Giriş yapılmadan, "Hemen Satın Al" işleminde ürün bilgisi Customer Area'yasına taşınmalı.
+
+* 4.) SpecialDays (Özel Günler) için, resim veya fotoğraf bulunacak.

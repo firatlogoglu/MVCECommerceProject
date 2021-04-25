@@ -2177,6 +2177,7 @@
     <Content Include="Areas\Manegement\Views\Product\FindCategoryProducts.cshtml" />
     <Content Include="Areas\Manegement\Views\Product\FindSubCategoryProducts.cshtml" />
     <Content Include="Areas\Manegement\Views\Product\FindSellerProducts.cshtml" />
+    <Content Include="Content\img\SpecialDays\ReadME.md" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2233,7 +2234,6 @@
     <Folder Include="Areas\Customer\Data\" />
     <Folder Include="Areas\Manegement\Data\" />
     <Folder Include="Areas\Seller\Data\" />
-    <Folder Include="Content\img\SpecialDays\" />
     <Folder Include="Models\" />
     <Folder Include="Uploads\Image\Categories\" />
   </ItemGroup>

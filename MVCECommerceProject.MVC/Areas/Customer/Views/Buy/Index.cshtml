@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<MVCECommerceProject.MODEL.CartModel.CartItem>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Sepetim";
     Layout = "~/Areas/Customer/Views/Shared/_Layout.cshtml";
 
     decimal? total = 0;
@@ -8,7 +8,7 @@
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">@TempData["User"]</h6>
+        <h6 class="m-0 font-weight-bold text-primary">@TempData["User"] - @ViewBag.Title</h6>
         @Html.ActionLink("Satın Al", "Buy", null, new { @class = "pull-right-mycss" })
     </div>
     <div class="card-body">

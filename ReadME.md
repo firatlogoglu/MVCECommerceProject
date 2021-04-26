@@ -154,11 +154,13 @@
 
 * 2.) SQL Database Server'ın yolu varsayılan olarak ayarlıdır ("server=.;database=MVCECommerceProjectDB;uid=sa;pwd=123"). Bu yolu, MVCECommerceProject.MODEL/Context/ProjectContext.cs dosyası içerisinde değiştirebilirsiniz.
 
-* 3.) Bu programın e-posta gönderebilmesi (gönderici) için, MVCECommerceProject.COMMON/MyTools/MailSender.cs dosyasının ayarlanması gerekiyor.
+* 3.) NuGet Paket Konsol Yöneticisini kullanarak veritabanını basılması gerekiyor.  
 
-* 4.) SampleData içerisindeki veriler kullanıcaksa, sahte (fake) e-posta adreslerine, e-posta gönderecektir. Bu e-posta adresleri kullanılan ve başkasına ait olabilir. Bunu engellemek için, MVCECommerceProject.COMMON/MyTools/MailSender.cs dosyası içerisindeki //email = ""; yorum satırından çıkarılıp, içerisine alcı e-posta adresi olarak kendi e-posta adresinizi eklemek zorundasınız.
+* 4.) Bu programın e-posta gönderebilmesi (gönderici) için, MVCECommerceProject.COMMON/MyTools/MailSender.cs dosyasının ayarlanması gerekiyor.
 
-* 5.) Proje, ilk kez çalıştırılmasında <b>"...\MVCECommerceProject\MVCECommerceProject.MVC\bin\roslyn\csc.exe' yolunun bir parçası bulunamadı."</b> hata verirse, <b> "bin" klasörünü silin.</b>
+* 5.) SampleData içerisindeki veriler kullanıcaksa, sahte (fake) e-posta adreslerine, e-posta gönderecektir. Bu e-posta adresleri kullanılan ve başkasına ait olabilir. Bunu engellemek için, MVCECommerceProject.COMMON/MyTools/MailSender.cs dosyası içerisindeki //email = ""; yorum satırından çıkarılıp, içerisine alcı e-posta adresi olarak kendi e-posta adresinizi eklemek zorundasınız.
+
+* 6.) Proje, ilk kez çalıştırılmasında <b>"...\MVCECommerceProject\MVCECommerceProject.MVC\bin\roslyn\csc.exe' yolunun bir parçası bulunamadı."</b> hata verirse, <b> "bin" klasörünü silin.</b>
 
 ## Projedeki Eksik Yerler
 * 1.) Kargo bilgisi eklenmediği için, satış işlemleri tamamlanmıştır.

@@ -1,7 +1,7 @@
 ﻿<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="@Url.Action("Index","Home")">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="@Url.Action("Index","Home", new { area= ""})">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
@@ -13,7 +13,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="@Url.Action("Index","Home")">
+        <a class="nav-link" href="@Url.Action("Index","Home", new { area= ""})">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>E-ticaret</span>
         </a>
@@ -23,17 +23,17 @@
     <hr class="sidebar-divider">
 
     <li class="nav-item">
-        <a class="nav-link" href="@Url.Action("Index","Home")">
+        <a class="nav-link" href="@Url.Action("Index","Home", new { area= ""})">
             <i class="fas fa-fw fa-table"></i>
             <span>Anasayfa</span>
         </a>
     </li>
 
-    @Html.Partial("PartialViews/Sidebar/_LoginSidebar")
+    @Html.Partial("~/Views/Shared/PartialViews/Sidebar/_LoginSidebar.cshtml")
 
-    @Html.Partial("PartialViews/Sidebar/_ProductsSellersSidebar")
+    @Html.Partial("~/Views/Shared/PartialViews/Sidebar/_ProductsSellersSidebar.cshtml")
 
-    @Html.Partial("PartialViews/Sidebar/_ContactAboutSidebar")
+    @Html.Partial("~/Views/Shared/PartialViews/Sidebar/_ContactAboutSidebar.cshtml")
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

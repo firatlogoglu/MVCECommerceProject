@@ -67,7 +67,7 @@
 * Sellers: Index, Find, Products ve TableProducts.
 * Buy: Index ve SepeteEkle.
 
-##### NOT: "Hemen Satın Al" işleminde ürün bilgisi Customer Area'yasına eklenecek.
+<b>NOT: "Hemen Satın Al" işleminde ürün bilgisi Customer Area'yasına eklenecek.</b>
 
 ##### 4.2.2 - Views/Shared/
 * _Layout:
@@ -80,7 +80,7 @@
 * PartialViews/_Footer:
 * PartialViews/_PageTop:
 
-##### NOT: _SpecialDays için resim veya fotoğraf bulunacak.
+<b>NOT: _SpecialDays için resim veya fotoğraf yolları ayarlanacak.</b>
 
 #### 4.3 - Customer Area'sı
 
@@ -150,13 +150,15 @@
 * [Start Bootstrap - Shop Item - GitHub](https://github.com/startbootstrap/startbootstrap-shop-item)
 
 ## Çalıştırılmadan Önce Yapılacak Ayarlar
-* 1.) MVCECommerceProject.MVC'nin ilk etapta başlangıç projesi yapılması gerekiyor: Çözüm Gezgini'de (Solution Explorer'da) MVCECommerceProject.MVC’a Sağ tıklayıp. “Set as StartUp Project/Başlangıç Projesi Olarak Ayarla” ya tıkla. 
+* 1.) MVCECommerceProject.MVC'nin ilk etapta başlangıç projesi yapılması gerekiyor: Çözüm Gezgini'de (Solution Explorer'da) MVCECommerceProject.MVC’a Sağ tıklayıp. <b>“Set as StartUp Project/Başlangıç Projesi Olarak Ayarla”</b> ya tıkla.
 
 * 2.) SQL Database Server'ın yolu varsayılan olarak ayarlıdır ("server=.;database=MVCECommerceProjectDB;uid=sa;pwd=123"). Bu yolu, MVCECommerceProject.MODEL/Context/ProjectContext.cs dosyası içerisinde değiştirebilirsiniz.
 
 * 3.) Bu programın e-posta gönderebilmesi (gönderici) için, MVCECommerceProject.COMMON/MyTools/MailSender.cs dosyasının ayarlanması gerekiyor.
 
 * 4.) SampleData içerisindeki veriler kullanıcaksa, sahte (fake) e-posta adreslerine, e-posta gönderecektir. Bu e-posta adresleri kullanılan ve başkasına ait olabilir. Bunu engellemek için, MVCECommerceProject.COMMON/MyTools/MailSender.cs dosyası içerisindeki //email = ""; yorum satırından çıkarılıp, içerisine alcı e-posta adresi olarak kendi e-posta adresinizi eklemek zorundasınız.
+
+* 5.) Proje, ilk kez çalıştırılmasında <b>"...\MVCECommerceProject\MVCECommerceProject.MVC\bin\roslyn\csc.exe' yolunun bir parçası bulunamadı."</b> hata verirse, <b> "bin" klasörünü silin.</b>
 
 ## Projedeki Eksik Yerler
 * 1.) Kargo bilgisi eklenmediği için, satış işlemleri tamamlanmıştır.

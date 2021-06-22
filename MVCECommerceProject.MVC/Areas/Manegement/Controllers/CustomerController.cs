@@ -131,7 +131,6 @@ namespace MVCECommerceProject.MVC.Areas.Manegement.Controllers
         public ActionResult Edit(AppUser appUser, HttpPostedFileBase ImagePath)
         {
             var userDetail = Session["MLogin"] as AppUser;
-            string cEmail = appUser.Email;
             string cEmailMsg = null;
 
             TempData.Keep();
@@ -155,7 +154,7 @@ namespace MVCECommerceProject.MVC.Areas.Manegement.Controllers
                 return View(appTCNOUserout);
             }
 
-            db.CheckImageFullEmpty(appUser, userDetail, ImagePath, cEmail, cEmailMsg);
+            db.CheckImageFullEmpty(appUser, userDetail, ImagePath, cEmailMsg);
             return RedirectToAction("Index");
         }
 

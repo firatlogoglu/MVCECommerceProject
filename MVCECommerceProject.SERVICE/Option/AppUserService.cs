@@ -146,40 +146,31 @@ namespace MVCECommerceProject.SERVICE.Option
         /// <param name="ImagePath">ImagePath</param>
         /// <param name="cEmail">cEmail</param>
         /// <param name="cEmailMsg">cEmailMsg</param>
-        public void CheckImageFullEmpty(AppUser appUser, AppUser userDetail, HttpPostedFileBase ImagePath, string cEmail, string cEmailMsg)
+        public void CheckImageFullEmpty(AppUser appUser, AppUser userDetail, HttpPostedFileBase ImagePath, string cEmailMsg)
         {
             string subject = "Hesap Değişikliği";
+            string cEmail = GetById(appUser.ID).Email;
             string body1 = "Sayın " + appUser.Name + " " + appUser.SurName + "," + "\n" + "İsteğiniz üzerine müşteri hesabınız değiştirilmiştir." + "\n" + "Bu hesap değiştirme işlemi: " + userDetail.Name + " " + userDetail.SurName + " (" + userDetail.Email + ") " + "tarafından isteğiniz üzerine yapılmıştır.";
             string body2 = "Sayın " + appUser.Name + " " + appUser.SurName + "," + "\n" + "İsteğiniz üzerine müşteri hesabınız değiştirilmiştir." + "\n" + cEmailMsg + "\n" + "Bu hesap değiştirme işlemi: " + userDetail.Name + " " + userDetail.SurName + " (" + userDetail.Email + ") " + "tarafından isteğiniz üzerine yapılmıştır.";
+
             if (ImagePath != null)
             {
                 appUser.ImagePath = ImageUploader.UploadSingleImage("~/Uploads/Image/Users/", ImagePath);
-                Update(appUser);
-
-                if (cEmailMsg == null)
-                {
-                    MailSender.SendEmail(appUser.Email, body1, subject);
-                }
-                else
-                {
-                    MailSender.SendEmail(cEmail, body2, subject);
-                    MailSender.SendEmail(appUser.Email, body2, subject);
-                }
             }
             else
             {
                 appUser.ImagePath = userDetail.ImagePath;
-                Update(appUser);
+            }
 
-                if (cEmailMsg == null)
-                {
-                    MailSender.SendEmail(appUser.Email, body1, subject);
-                }
-                else
-                {
-                    MailSender.SendEmail(cEmail, body2, subject);
-                    MailSender.SendEmail(appUser.Email, body2, subject);
-                }
+            Update(appUser);
+            if (cEmailMsg == null)
+            {
+                MailSender.SendEmail(appUser.Email, body1, subject);
+            }
+            else
+            {
+                MailSender.SendEmail(cEmail, body2, subject);
+                MailSender.SendEmail(appUser.Email, body2, subject);
             }
         }
 

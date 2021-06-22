@@ -143,61 +143,20 @@ namespace MVCECommerceProject.MVC.Areas.Manegement.Controllers
 
             appUser.ModifiedBy = userDetail.Email;
 
-            if (appUser.Email != db.GetById(appUser.ID).Email)
+            if (db.CheckAgainEmailAddres(appUser, out string msgMail, out AppUser appMailUserout, out cEmailMsg))
             {
-                if (db.CheckEmail(appUser.Email))
-                {
-                    TempData["Error"] = appUser.Email + " e-posta adresi, kayıtlarımızda mevcut.";
-                    appUser.ImagePath = db.GetById(appUser.ID).ImagePath;
-                    return View(appUser);
-                }
-                cEmailMsg = "E-posta adresiniz, isteğiniz üzerine, " + appUser.Email + " şeklinde değiştirilmiştir: ";
+                TempData["Error"] = msgMail;
+                return View(appMailUserout);
             }
 
-            if (appUser.TCNO != db.GetById(appUser.ID).TCNO)
+            if (db.CheckAgainUserChangeTCNO(appUser, out string msgTCNO, out AppUser appTCNOUserout))
             {
-                if (db.CheckTCNO(appUser.TCNO))
-                {
-                    TempData["Error"] = appUser.TCNO + " TCKNO, kayıtlarımızda mevcut.";
-                    appUser.ImagePath = db.GetById(appUser.ID).ImagePath;
-                    return View(appUser);
-                }
+                TempData["Error"] = msgTCNO;
+                return View(appTCNOUserout);
             }
 
-            if (ImagePath != null)
-            {
-                appUser.ImagePath = ImageUploader.UploadSingleImage("~/Uploads/Image/Users/", ImagePath);
-                db.Update(appUser);
-
-                if (cEmailMsg == null)
-                {
-                    MailSender.SendEmail(appUser.Email, "Sayın " + appUser.Name + " " + appUser.SurName + "," + "\n" + "İsteğiniz üzerine müşteri hesabınız değiştirilmiştir." + "\n" + "Bu hesap değiştirme işlemi: " + userDetail.Name + " " + userDetail.SurName + " (" + userDetail.Email + ") " + "tarafından isteğiniz üzerine yapılmıştır.", "Hesap Değişikliği");
-                }
-                else
-                {
-                    MailSender.SendEmail(cEmail, "Sayın " + appUser.Name + " " + appUser.SurName + "," + "\n" + "İsteğiniz üzerine müşteri hesabınız değiştirilmiştir." + "\n" + cEmailMsg + "\n" + "Bu hesap değiştirme işlemi: " + userDetail.Name + " " + userDetail.SurName + " (" + userDetail.Email + ") " + "tarafından isteğiniz üzerine yapılmıştır.", "Hesap Değişikliği");
-                    MailSender.SendEmail(appUser.Email, "Sayın " + appUser.Name + " " + appUser.SurName + "," + "\n" + "İsteğiniz üzerine müşteri hesabınız değiştirilmiştir." + "\n" + cEmailMsg + "\n" + "Bu hesap değiştirme işlemi: " + userDetail.Name + " " + userDetail.SurName + " (" + userDetail.Email + ") " + "tarafından isteğiniz üzerine yapılmıştır.", "Hesap Değişikliği");
-                }
-
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                appUser.ImagePath = db.GetById(appUser.ID).ImagePath;
-                db.Update(appUser);
-
-                if (cEmailMsg == null)
-                {
-                    MailSender.SendEmail(appUser.Email, "Sayın " + appUser.Name + " " + appUser.SurName + "," + "\n" + "İsteğiniz üzerine müşteri hesabınız değiştirilmiştir." + "\n" + "Bu hesap değiştirme işlemi: " + userDetail.Name + " " + userDetail.SurName + " (" + userDetail.Email + ") " + "tarafından isteğiniz üzerine yapılmıştır.", "Hesap Değişikliği");
-                }
-                else
-                {
-                    MailSender.SendEmail(cEmail, "Sayın " + appUser.Name + " " + appUser.SurName + "," + "\n" + "İsteğiniz üzerine müşteri hesabınız değiştirilmiştir." + "\n" + cEmailMsg + "\n" + "Bu hesap değiştirme işlemi: " + userDetail.Name + " " + userDetail.SurName + " (" + userDetail.Email + ") " + "tarafından isteğiniz üzerine yapılmıştır.", "Hesap Değişikliği");
-                    MailSender.SendEmail(appUser.Email, "Sayın " + appUser.Name + " " + appUser.SurName + "," + "\n" + "İsteğiniz üzerine müşteri hesabınız değiştirilmiştir." + "\n" + cEmailMsg + "\n" + "Bu hesap değiştirme işlemi: " + userDetail.Name + " " + userDetail.SurName + " (" + userDetail.Email + ") " + "tarafından isteğiniz üzerine yapılmıştır.", "Hesap Değişikliği");
-                }
-
-                return RedirectToAction("Index");
-            }
+            db.CheckImageFullEmpty(appUser, userDetail, ImagePath, cEmail, cEmailMsg);
+            return RedirectToAction("Index");
         }
 
         public ActionResult Delete(Guid id)
@@ -276,12 +235,7 @@ namespace MVCECommerceProject.MVC.Areas.Manegement.Controllers
                 TempData["UserImg"] = userDetail.ImagePath;
             }
 
-            AppUser appUser = db.GetById(id);
-            appUser.Password = appUser.ConfirmPassword = Guid.NewGuid().ToString();
-            appUser.ModifiedBy = userDetail.Email;
-            db.Remove(appUser);
-
-            MailSender.SendEmail(appUser.Email, "Sayın " + appUser.Name + " " + appUser.SurName + "," + "\n" + "İsteğiniz üzerine şifreniz sıfırlandı." + "\n" + "Yeni Şifreniz: " + appUser.Password + "\n" + "Bu işlemi: " + userDetail.Name + " " + userDetail.SurName + " (" + userDetail.Email + ") " + "tarafından isteğiniz üzerine yapılmıştır." + "\n" + "Giriş yaptıktan sonra lütfen şifrenizi değiştiriniz!", "Şifreniz sıfırlandı");
+            db.ResetPassword(id, userDetail);
             return RedirectToAction("Index");
         }
     }

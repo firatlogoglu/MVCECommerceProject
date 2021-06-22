@@ -40,6 +40,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -58,6 +59,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MVCECommerceProject.COMMON\MVCECommerceProject.COMMON.csproj">
+      <Project>{3cc49a30-ffcc-4980-a92f-bb465e1d90d7}</Project>
+      <Name>MVCECommerceProject.COMMON</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MVCECommerceProject.CORE\MVCECommerceProject.CORE.csproj">
       <Project>{c166d305-305f-4563-98a6-bf19969c106e}</Project>
       <Name>MVCECommerceProject.CORE</Name>

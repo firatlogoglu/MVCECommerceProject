@@ -1,5 +1,4 @@
-﻿using MVCECommerceProject.COMMON.MyTools;
-using MVCECommerceProject.MODEL.Entities;
+﻿using MVCECommerceProject.MODEL.Entities;
 using MVCECommerceProject.MVC.Filters.AuthorizationFilters;
 using MVCECommerceProject.SERVICE.Option;
 using System;
@@ -117,59 +116,30 @@ namespace MVCECommerceProject.MVC.Areas.Manegement.Controllers
 
             appUser.ModifiedBy = userDetail.Email;
 
-            if (appUser.Email != db.GetById(appUser.ID).Email)
+            if (db.CheckAgainEmailAddres(appUser, out string msgMail, out AppUser appMailUserout))
             {
-                if (db.CheckEmail(appUser.Email))
-                {
-                    TempData["Error"] = appUser.Email + " e-posta adresi, kayıtlarımızda mevcut.";
-                    appUser.ImagePath = db.GetById(appUser.ID).ImagePath;
-                    return View(appUser);
-                }
+                TempData["Error"] = msgMail;
+                return View(appMailUserout);
             }
 
-            if (appUser.TCNO != db.GetById(appUser.ID).TCNO)
+            if (db.CheckAgainUserChangeTCNO(appUser, out string msgTCNO, out AppUser appTCNOUserout))
             {
-                if (db.CheckTCNO(appUser.TCNO))
-                {
-                    TempData["Error"] = appUser.TCNO + " TCKNO, kayıtlarımızda mevcut.";
-                    appUser.ImagePath = db.GetById(appUser.ID).ImagePath;
-                    return View(appUser);
-                }
+                TempData["Error"] = msgTCNO;
+                return View(appTCNOUserout);
             }
 
-            if (ImagePath != null)
-            {
-                appUser.ImagePath = ImageUploader.UploadSingleImage("~/Uploads/Image/Users/", ImagePath);
-                db.Update(appUser);
-
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                appUser.ImagePath = userDetail.ImagePath;
-                db.Update(appUser);
-
-                return RedirectToAction("Index");
-            }
+            db.CheckImageFullEmpty(appUser, userDetail.ImagePath, ImagePath);
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult ForgotPassword(string mail)
         {
-            if (mail == string.Empty)
+            if (!db.ForgotPassword(mail, out string errorMsg))
             {
-                TempData["Error"] = "Lütfen alanları boş bırakmayın";
+                TempData["Error"] = errorMsg;
                 return RedirectToAction("ForgotPassword");
-            }
-            else
-            {
-                var a = MailSender.SendEmail(mail, "Şifre Sıfırlama", "Şifre Sıfırlama") as string;
-
-                if (a != string.Empty)
-                {
-                    TempData["Error"] = a;
-                }
             }
             return View();
         }

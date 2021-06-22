@@ -12,7 +12,6 @@ namespace MVCECommerceProject.COMMON.MyTools
            3=> dosya boş.
         */
 
-        //TODO: Güncellemede dosya boş olarak kaydediyor.
         /// <summary>
         /// 
         /// </summary>

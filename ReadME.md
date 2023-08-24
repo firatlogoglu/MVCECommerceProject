@@ -33,8 +33,8 @@
 * ProductMap:
 * SubCategoryMap:
 #### 2.4 - Context
-* ProjectContext:
-* SampleData:
+* ProjectContext: Context nesnemizdir.
+* SampleData: Örnek verilerimizin bulunduğu classtır.
 #### 2.5 - Migrations
 * Configuration içerisine 2.4 Context içerisinde yer alan SampleData instance alınarak Seed metotun içerisine verilmiştir.
 
@@ -158,7 +158,7 @@
 
 * 4.) Bu programın e-posta gönderebilmesi (gönderici) için, MVCECommerceProject.COMMON/MyTools/MailSender.cs dosyasının ayarlanması gerekiyor.
 
-* 5.) SampleData içerisindeki veriler kullanıcaksa, sahte (fake) e-posta adreslerine, e-posta gönderecektir. Bu e-posta adresleri kullanılan ve başkasına ait olabilir. Bunu engellemek için, MVCECommerceProject.COMMON/MyTools/MailSender.cs dosyası içerisindeki //email = ""; yorum satırından çıkarılıp, içerisine alcı e-posta adresi olarak kendi e-posta adresinizi eklemek zorundasınız.
+* 5.) SampleData içerisindeki veriler kullanıcaksa, sahte (fake) e-posta adreslerine, e-posta gönderecektir. Bu e-posta adresleri gerçek kişi/kurumlara ait olabilir. Bunu engellemek için, MVCECommerceProject.COMMON/MyTools/MailSender.cs dosyası içerisindeki //email = ""; yorum satırından çıkarılıp, içerisine alcı e-posta adresi olarak kendi e-posta adresinizi eklemek zorundasınız.
 
 * 6.) Proje, ilk kez çalıştırılmasında <b>"...\MVCECommerceProject\MVCECommerceProject.MVC\bin\roslyn\csc.exe' yolunun bir parçası bulunamadı."</b> hata verirse, <b> "bin" klasörünü silin.</b>
 
